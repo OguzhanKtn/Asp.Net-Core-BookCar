@@ -1,6 +1,7 @@
 ﻿using Application.Features.CQRS.Commands.AboutCommands;
 using Application.Interfaces;
 using Domain.Entities;
+using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Application.Features.CQRS.Handlers.AboutHandlers
 {
-    public class CreateAboutCommandHandler
+    public class CreateAboutCommandHandler : IRequestHandler<CreateAboutCommand>
     {
         private readonly IRepository<About> _aboutRepository;
 
@@ -18,13 +19,13 @@ namespace Application.Features.CQRS.Handlers.AboutHandlers
             _aboutRepository = aboutRepository;
         }
 
-        public async Task Handle(CreateAboutCommand command)
-        {      
+        public async Task Handle(CreateAboutCommand request, CancellationToken cancellationToken)
+        {
             await _aboutRepository.CreateAsync(new About()
             {
-                Title = command.Title,
-                Description = command.Description,
-                ImageUrl = command.ImageUrl,
+                Title = request.Title,
+                Description = request.Description,
+                ImageUrl = request.ImageUrl,
             });
         }
     }

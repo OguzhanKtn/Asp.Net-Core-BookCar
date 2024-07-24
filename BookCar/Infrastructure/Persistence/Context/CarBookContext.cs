@@ -12,7 +12,7 @@ namespace Persistence.Context
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server = DESKTOP-S5STNHF; initial Catalog=CarBook; integrated security = true;trustservercertificate=true");
+            optionsBuilder.UseSqlServer("Server = .; initial Catalog=CarBook; integrated security = true;trustservercertificate=true");
         }
 
         public DbSet<About> abouts { get; set; }

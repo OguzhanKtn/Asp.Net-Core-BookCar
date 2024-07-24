@@ -8,12 +8,7 @@ using System.Threading.Tasks;
 
 namespace Application.Features.CQRS.Queries.AboutQueries
 {
-    public class GetAboutByIdQuery : IRequest<GetAboutByIdQueryResult>
+    public class GetAboutQuery : IRequest<List<GetAboutQueryResult>>
     {
-        public int Id { get; set; }
-        public GetAboutByIdQuery(int id)
-        {
-            id = Id;
-        }
     }
 }

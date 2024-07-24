@@ -2,15 +2,11 @@
 using Application.Features.CQRS.Results.AboutResults;
 using Application.Interfaces;
 using Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MediatR;
 
 namespace Application.Features.CQRS.Handlers.AboutHandlers
 {
-    public class GetAboutByIdQueryHandler
+    public class GetAboutByIdQueryHandler : IRequestHandler<GetAboutByIdQuery, GetAboutByIdQueryResult>
     {
         private readonly IRepository<About> _repository;
 
@@ -19,9 +15,9 @@ namespace Application.Features.CQRS.Handlers.AboutHandlers
             _repository = repository;
         }
 
-        public async Task<GetAboutByIdQueryResult> Handle(GetAboutByIdQuery getAboutByIdQuery)
+        public async Task<GetAboutByIdQueryResult> Handle(GetAboutByIdQuery request, CancellationToken cancellationToken)
         {
-            var value = await _repository.GetByIdAsync(getAboutByIdQuery.Id);
+            var value = await _repository.GetByIdAsync(request.Id);
             return new GetAboutByIdQueryResult()
             {
                 Title = value.Title,
