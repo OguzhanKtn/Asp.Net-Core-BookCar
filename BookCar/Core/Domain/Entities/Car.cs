@@ -21,5 +21,6 @@ namespace Domain.Entities
         public string BigImageUrl { get; set; }
         public List<CarFeature> CarFeatures { get; set; }
         public List<CarDescription> CarDescriptions { get; set; }
+        public List<CarPricing> CarPricings { get; set; }
     }
 }
