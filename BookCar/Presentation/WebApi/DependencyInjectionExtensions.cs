@@ -1,6 +1,11 @@
 ﻿using Application.Features.CQRS.Handlers.AboutHandlers;
 using Application.Features.CQRS.Handlers.BannerHandlers;
 using Application.Features.CQRS.Handlers.BrandHandlers;
+using Application.Features.CQRS.Handlers.CarHandlers;
+using Application.Features.CQRS.Handlers.CategoryHandlers;
+using Application.Features.CQRS.Handlers.ContactHandlers;
+using Application.Features.CQRS.Handlers.FeatureHandlers;
+using Application.Features.CQRS.Handlers.FooterAddressHandlers;
 using Application.Interfaces;
 using Persistence.Context;
 using Persistence.Repositories;
@@ -14,6 +19,7 @@ namespace WebApi
         {
             services.AddScoped<CarBookContext>();
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped(typeof(ICarRepository), typeof(CarRepository));
             services.AddMediatR(cfg =>
             {
                 cfg.RegisterServicesFromAssembly(typeof(CreateAboutCommandHandler).Assembly);
@@ -33,6 +39,37 @@ namespace WebApi
                 cfg.RegisterServicesFromAssembly(typeof(RemoveBrandCommandHandler).Assembly);
                 cfg.RegisterServicesFromAssembly(typeof(GetBrandQueryHandler).Assembly);
                 cfg.RegisterServicesFromAssembly(typeof(GetBrandByIdQueryHandler).Assembly);
+
+                cfg.RegisterServicesFromAssembly(typeof(CreateCarCommandHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(UpdateCarCommandHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(RemoveCarCommandHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(GetCarQueryHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(GetCarByIdQueryHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(GetCarWithBrandQueryHandler).Assembly);
+
+                cfg.RegisterServicesFromAssembly(typeof(CreateCategoryCommandHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(UpdateCategoryCommandHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(RemoveCategoryCommandHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(GetCategoryQueryHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(GetCategoryByIdQueryHandler).Assembly);
+
+                cfg.RegisterServicesFromAssembly(typeof(CreateContactCommandHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(UpdateContactCommandHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(RemoveContactCommandHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(GetContactQueryHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(GetContactByIdQueryHandler).Assembly);
+
+                cfg.RegisterServicesFromAssembly(typeof(CreateFeatureCommandHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(UpdateFeatureCommandHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(RemoveFeatureCommandHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(GetFeatureQueryHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(GetFeatureByIdQueryHandler).Assembly);
+
+                cfg.RegisterServicesFromAssembly(typeof(CreateFooterAddressCommandHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(UpdateFooterAddressCommandHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(RemoveFooterAddressCommandHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(GetFooterAddressQueryHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(GetFooterAddressByIdQueryHandler).Assembly);
 
             });
 
