@@ -6,6 +6,8 @@ using Application.Features.CQRS.Handlers.CategoryHandlers;
 using Application.Features.CQRS.Handlers.ContactHandlers;
 using Application.Features.CQRS.Handlers.FeatureHandlers;
 using Application.Features.CQRS.Handlers.FooterAddressHandlers;
+using Application.Features.CQRS.Handlers.LocationHandlers;
+using Application.Features.CQRS.Handlers.PricingHandlers;
 using Application.Interfaces;
 using Persistence.Context;
 using Persistence.Repositories;
@@ -68,8 +70,20 @@ namespace WebApi
                 cfg.RegisterServicesFromAssembly(typeof(CreateFooterAddressCommandHandler).Assembly);
                 cfg.RegisterServicesFromAssembly(typeof(UpdateFooterAddressCommandHandler).Assembly);
                 cfg.RegisterServicesFromAssembly(typeof(RemoveFooterAddressCommandHandler).Assembly);
-                cfg.RegisterServicesFromAssembly(typeof(GetFooterAddressQueryHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(GetLocationQueryHandler).Assembly);
                 cfg.RegisterServicesFromAssembly(typeof(GetFooterAddressByIdQueryHandler).Assembly);
+
+                cfg.RegisterServicesFromAssembly(typeof(CreateLocationCommandHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(UpdateLocationCommandHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(RemoveLocationCommandHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(GetLocationQueryHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(GetLocationByIdQueryHandler).Assembly);
+
+                cfg.RegisterServicesFromAssembly(typeof(CreatePricingCommandHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(UpdatePricingCommandHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(RemovePricingCommandHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(GetPricingQueryHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(GetPricingByIdQueryHandler).Assembly);
 
             });
 
