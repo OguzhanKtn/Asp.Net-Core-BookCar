@@ -11,11 +11,11 @@ using System.Threading.Tasks;
 
 namespace Application.Features.CQRS.Handlers.FooterAddressHandlers
 {
-    public class GetLocationQueryHandler : IRequestHandler<GetFooterAddressQuery, List<GetFooterAddressQueryResult>>
+    public class GetFooterAddressQueryHandler : IRequestHandler<GetFooterAddressQuery, List<GetFooterAddressQueryResult>>
     {
         private readonly IRepository<FooterAdress> repository;
 
-        public GetLocationQueryHandler(IRepository<FooterAdress> repository)
+        public GetFooterAddressQueryHandler(IRepository<FooterAdress> repository)
         {
             this.repository = repository;
         }

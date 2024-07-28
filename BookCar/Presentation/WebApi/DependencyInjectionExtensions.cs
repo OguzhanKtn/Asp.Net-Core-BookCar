@@ -8,6 +8,8 @@ using Application.Features.CQRS.Handlers.FeatureHandlers;
 using Application.Features.CQRS.Handlers.FooterAddressHandlers;
 using Application.Features.CQRS.Handlers.LocationHandlers;
 using Application.Features.CQRS.Handlers.PricingHandlers;
+using Application.Features.CQRS.Handlers.ServiceHandlers;
+using Application.Features.CQRS.Handlers.SocialMediaHandlers;
 using Application.Interfaces;
 using Persistence.Context;
 using Persistence.Repositories;
@@ -70,7 +72,7 @@ namespace WebApi
                 cfg.RegisterServicesFromAssembly(typeof(CreateFooterAddressCommandHandler).Assembly);
                 cfg.RegisterServicesFromAssembly(typeof(UpdateFooterAddressCommandHandler).Assembly);
                 cfg.RegisterServicesFromAssembly(typeof(RemoveFooterAddressCommandHandler).Assembly);
-                cfg.RegisterServicesFromAssembly(typeof(GetLocationQueryHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(GetFooterAddressQueryHandler).Assembly);
                 cfg.RegisterServicesFromAssembly(typeof(GetFooterAddressByIdQueryHandler).Assembly);
 
                 cfg.RegisterServicesFromAssembly(typeof(CreateLocationCommandHandler).Assembly);
@@ -84,6 +86,19 @@ namespace WebApi
                 cfg.RegisterServicesFromAssembly(typeof(RemovePricingCommandHandler).Assembly);
                 cfg.RegisterServicesFromAssembly(typeof(GetPricingQueryHandler).Assembly);
                 cfg.RegisterServicesFromAssembly(typeof(GetPricingByIdQueryHandler).Assembly);
+
+                cfg.RegisterServicesFromAssembly(typeof(CreateServiceCommandHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(UpdateServiceCommandHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(RemoveServiceCommandHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(GetServiceQueryHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(GetServiceByIdQueryHandler).Assembly);
+
+                cfg.RegisterServicesFromAssembly(typeof(CreateSocialMediaCommandHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(UpdateSocialMediaCommandHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(RemoveSocialMediaCommandHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(GetSocialMediaQueryHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(GetSocialMediaByIdQueryHandler).Assembly);
+
 
             });
 
