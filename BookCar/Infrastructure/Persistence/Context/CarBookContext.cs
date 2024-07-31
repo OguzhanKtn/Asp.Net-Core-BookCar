@@ -12,7 +12,7 @@ namespace Persistence.Context
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server = .; initial Catalog=CarBook; integrated security = true;trustservercertificate=true");
+            optionsBuilder.UseSqlServer("Server = DESKTOP-S5STNHF; initial Catalog=CarBook; integrated security = true;trustservercertificate=true");
         }
 
         public DbSet<About> abouts { get; set; }
@@ -23,11 +23,12 @@ namespace Persistence.Context
         public DbSet<CarFeature> carFeatures { get; set; }
         public DbSet<CarPricing> carPricings { get; set; }
         public DbSet<Category> categories { get; set; }
+        public DbSet<Contact> contacts { get; set; }
         public DbSet<Feature> features { get; set; }
         public DbSet<FooterAdress> footerAdresses { get; set; }
         public DbSet<Location> locations { get; set; }
         public DbSet<Pricing> pricings { get; set; }
-        public DbSet<Service> servces { get; set; }
+        public DbSet<Service> services { get; set; }
         public DbSet<SocialMedia> socialMedias { get; set; }
         public DbSet<Testimonial> testimonials { get; set; }
     }

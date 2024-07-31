@@ -10,6 +10,7 @@ using Application.Features.CQRS.Handlers.LocationHandlers;
 using Application.Features.CQRS.Handlers.PricingHandlers;
 using Application.Features.CQRS.Handlers.ServiceHandlers;
 using Application.Features.CQRS.Handlers.SocialMediaHandlers;
+using Application.Features.CQRS.Handlers.TestimonialHandlers;
 using Application.Interfaces;
 using Persistence.Context;
 using Persistence.Repositories;
@@ -98,6 +99,12 @@ namespace WebApi
                 cfg.RegisterServicesFromAssembly(typeof(RemoveSocialMediaCommandHandler).Assembly);
                 cfg.RegisterServicesFromAssembly(typeof(GetSocialMediaQueryHandler).Assembly);
                 cfg.RegisterServicesFromAssembly(typeof(GetSocialMediaByIdQueryHandler).Assembly);
+
+                cfg.RegisterServicesFromAssembly(typeof(CreateTestimonialCommandHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(UpdateTestimonialCommandHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(RemoveTestimonialCommandHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(GetTestimonialQueryHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(GetTestimonialByIdQueryHandler).Assembly);
 
 
             });

@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Entities
+namespace Dto.TestimonialDtos
 {
-    public class Testimonial
+    public class ResultTestimonialDto
     {
-        public int TestimonialID { get; set; }
         public string Name { get; set; }
         public string Title { get; set; }
         public string Comment { get; set; }
