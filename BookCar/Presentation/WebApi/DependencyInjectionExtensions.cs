@@ -51,6 +51,7 @@ namespace WebApi
                 cfg.RegisterServicesFromAssembly(typeof(GetCarQueryHandler).Assembly);
                 cfg.RegisterServicesFromAssembly(typeof(GetCarByIdQueryHandler).Assembly);
                 cfg.RegisterServicesFromAssembly(typeof(GetCarWithBrandQueryHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(GetLast5CarsWithBrandQueryHandler).Assembly);
 
                 cfg.RegisterServicesFromAssembly(typeof(CreateCategoryCommandHandler).Assembly);
                 cfg.RegisterServicesFromAssembly(typeof(UpdateCategoryCommandHandler).Assembly);

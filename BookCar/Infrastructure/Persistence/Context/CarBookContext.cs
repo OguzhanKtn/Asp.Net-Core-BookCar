@@ -1,5 +1,6 @@
 ﻿using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,10 @@ namespace Persistence.Context
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server = DESKTOP-S5STNHF; initial Catalog=CarBook; integrated security = true;trustservercertificate=true");
+            optionsBuilder
+                .UseSqlServer("Server = .; initial Catalog=CarBook; integrated security = true;trustservercertificate=true")
+                .EnableSensitiveDataLogging()
+                   .LogTo(Console.WriteLine, LogLevel.Information);
         }
 
         public DbSet<About> abouts { get; set; }

@@ -19,9 +19,14 @@ namespace Persistence.Repositories
             _context = context;
         }
 
-        public List<Car> GetCarsWithBrands()
+        public IEnumerable<Car> GetCarsWithBrands()
         {
             return _context.cars.Include(x=> x.Brand).ToList();
+        }
+
+        public IQueryable<Car> GetLast5CarsWithBrands()
+        {
+            return _context.cars.Include(_x => _x.Brand).OrderByDescending(x => x.CarID).Take(5);
         }
     }
 }

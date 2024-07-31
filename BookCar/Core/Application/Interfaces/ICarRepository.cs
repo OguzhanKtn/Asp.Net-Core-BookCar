@@ -9,6 +9,7 @@ namespace Application.Interfaces
 {
     public interface ICarRepository
     {
-        List<Car> GetCarsWithBrands();
+        IEnumerable<Car> GetCarsWithBrands();
+        IQueryable<Car> GetLast5CarsWithBrands();
     }
 }
