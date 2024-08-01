@@ -1,4 +1,5 @@
 ﻿using Application.Features.CQRS.Commands.CarCommands;
+using Application.Features.CQRS.Queries.CarPricingQueries;
 using Application.Features.CQRS.Queries.CarQueries;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -59,6 +60,12 @@ namespace WebApi.Controllers
         public async Task<IActionResult> GetLast5CarsWithBrand()
         {
             var values = await _mediator.Send(new GetLast5CarsWithBrandQuery());
+            return Ok(values);
+        }
+        [HttpGet("GetCarPricingWithCar")]
+        public async Task<IActionResult> GetCarPricingWithCar()
+        {
+            var values = await _mediator.Send(new GetCarPricingQuery());
             return Ok(values);
         }
     }

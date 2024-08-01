@@ -10,24 +10,19 @@ using System.Threading.Tasks;
 
 namespace Persistence.Repositories
 {
-    public class CarRepository : ICarRepository
+    public class CarPricingRepository : ICarPricingRepository
     {
         private readonly CarBookContext _context;
 
-        public CarRepository(CarBookContext context)
+        public CarPricingRepository(CarBookContext context)
         {
             _context = context;
         }
 
-        public IEnumerable<Car> GetCarsWithBrands()
+        public IQueryable<CarPricing> GetCarPricingWithCars()
         {
-            return _context.cars.Include(x=> x.Brand).ToList();
+            var values = _context.carPricings.Include(p => p.Car).ThenInclude(x => x.Brand).Include(y => y.Pricing).Where(z => z.PricingID == 2);
+            return values;
         }
-
-        public IQueryable<Car> GetLast5CarsWithBrands()
-        {
-            return _context.cars.Include(_x => _x.Brand).OrderByDescending(x => x.CarID).Take(5);
-        }
-
     }
 }

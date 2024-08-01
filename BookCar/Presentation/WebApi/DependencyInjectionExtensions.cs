@@ -6,6 +6,7 @@ using Application.Features.CQRS.Handlers.CategoryHandlers;
 using Application.Features.CQRS.Handlers.ContactHandlers;
 using Application.Features.CQRS.Handlers.FeatureHandlers;
 using Application.Features.CQRS.Handlers.FooterAddressHandlers;
+using Application.Features.CQRS.Handlers.GetCarPricingHandlers;
 using Application.Features.CQRS.Handlers.LocationHandlers;
 using Application.Features.CQRS.Handlers.PricingHandlers;
 using Application.Features.CQRS.Handlers.ServiceHandlers;
@@ -25,6 +26,7 @@ namespace WebApi
             services.AddScoped<CarBookContext>();
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped(typeof(ICarRepository), typeof(CarRepository));
+            services.AddScoped(typeof(ICarPricingRepository), typeof(CarPricingRepository));
             services.AddMediatR(cfg =>
             {
                 cfg.RegisterServicesFromAssembly(typeof(CreateAboutCommandHandler).Assembly);
@@ -52,6 +54,7 @@ namespace WebApi
                 cfg.RegisterServicesFromAssembly(typeof(GetCarByIdQueryHandler).Assembly);
                 cfg.RegisterServicesFromAssembly(typeof(GetCarWithBrandQueryHandler).Assembly);
                 cfg.RegisterServicesFromAssembly(typeof(GetLast5CarsWithBrandQueryHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(GetCarPricingQueryHandler).Assembly);
 
                 cfg.RegisterServicesFromAssembly(typeof(CreateCategoryCommandHandler).Assembly);
                 cfg.RegisterServicesFromAssembly(typeof(UpdateCategoryCommandHandler).Assembly);

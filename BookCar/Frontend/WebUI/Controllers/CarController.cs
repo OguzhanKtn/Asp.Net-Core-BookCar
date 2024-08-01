@@ -1,4 +1,5 @@
 ﻿using Dto.CarDtos;
+using Dto.CarPricingDtos;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -16,12 +17,12 @@ namespace WebUI.Controllers
         public async Task<IActionResult> Index()
         {
             var client = _httpClientFactory.CreateClient();
-            var response = await client.GetAsync("https://localhost:44380/api/Car/GetCarWithBrand");
+            var response = await client.GetAsync("https://localhost:44380/api/Car/GetCarPricingWithCar");
 
             if (response.IsSuccessStatusCode)
             {
                 var jsonData = await response.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<IEnumerable<ResultCarWithBrandsDto>>(jsonData);
+                var values = JsonConvert.DeserializeObject<IEnumerable<ResultCarPricingDto>>(jsonData);
 
                 return View(values);
             }
