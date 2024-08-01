@@ -7,26 +7,12 @@ namespace WebUI.Controllers
 {
     public class ServiceController : Controller
     {
-        private readonly IHttpClientFactory _httpClientFactory;
-
-        public ServiceController(IHttpClientFactory httpClientFactory)
+     
+        public IActionResult Index()
         {
-            _httpClientFactory = httpClientFactory;
-        }
-
-        public async Task<IActionResult> Index()
-        {
-            var client = _httpClientFactory.CreateClient();
-            var response = await client.GetAsync("https://localhost:44380/api/Service");
-
-            if (response.IsSuccessStatusCode)
-            {
-                var jsonData = await response.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<IEnumerable<ResultServiceDto>>(jsonData);
-
-                return View(values);
-            }
-            return View();
+            ViewBag.v1 = "Services";
+            ViewBag.v2 = "Our Services";
+             return View();
         }
     }
 }
