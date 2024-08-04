@@ -22,6 +22,7 @@ namespace Application.Features.CQRS.Handlers.CarHandlers
             
            return values.Select(x => new GetCarWithBrandQueryResult 
            { 
+                CarID = x.CarID,
                 BrandName = x.Brand.Name,
                 Model = x.Model,
                 CoverImageUrl = x.CoverImageUrl,

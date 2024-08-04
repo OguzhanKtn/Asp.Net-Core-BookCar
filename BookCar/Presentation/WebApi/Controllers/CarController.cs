@@ -43,7 +43,7 @@ namespace WebApi.Controllers
             return Ok("Başarıyla Güncellendi");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCar(int id)
         {
             await _mediator.Send(new RemoveCarCommand(id));

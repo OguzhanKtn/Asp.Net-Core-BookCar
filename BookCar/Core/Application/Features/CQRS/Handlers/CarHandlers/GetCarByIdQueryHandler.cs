@@ -21,6 +21,7 @@ namespace Application.Features.CQRS.Handlers.CarHandlers
 
             return new GetCarByIdQueryResult()
             {
+                CarID = value.CarID,
                 BrandID = value.BrandID,
                 Model = value.Model,
                 BigImageUrl = value.BigImageUrl,

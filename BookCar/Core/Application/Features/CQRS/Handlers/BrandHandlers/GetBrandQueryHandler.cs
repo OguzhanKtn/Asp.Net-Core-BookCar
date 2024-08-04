@@ -25,7 +25,8 @@ namespace Application.Features.CQRS.Handlers.BrandHandlers
             var values = await _repository.GetAllAsync();
             return values.Select(x => new GetBrandQueryResult()
             {
-                Name = x.Name,
+                Id = x.BrandID,
+                Name = x.Name
             }).ToList();
         }
     }
