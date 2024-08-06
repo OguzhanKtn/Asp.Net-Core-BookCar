@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Features.CQRS.Results.FeatureResults
+namespace Dto.FeatureDtos
 {
-    public class GetFeatureByIdQueryResult
+    public class UpdateFeatureDto
     {
         public int Id { get; set; }
         public string Name { get; set; }

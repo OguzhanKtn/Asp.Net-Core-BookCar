@@ -8,6 +8,7 @@ namespace Application.Features.CQRS.Results.FeatureResults
 {
     public class GetFeatureQueryResult
     {
+        public int Id { get; set; }
         public string Name { get; set; }
     }
 }
