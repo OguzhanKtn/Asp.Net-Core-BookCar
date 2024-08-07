@@ -13,7 +13,7 @@ namespace Application.Features.CQRS.Queries.AboutQueries
         public int Id { get; set; }
         public GetAboutByIdQuery(int id)
         {
-            id = Id;
+           Id = id;
         }
     }
 }

@@ -3,6 +3,11 @@ using Application.Features.CQRS.Results.AboutResults;
 using Application.Interfaces;
 using Domain.Entities;
 using MediatR;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Application.Features.CQRS.Handlers.AboutHandlers
 {
@@ -18,12 +23,6 @@ namespace Application.Features.CQRS.Handlers.AboutHandlers
         public async Task<GetAboutByIdQueryResult> Handle(GetAboutByIdQuery request, CancellationToken cancellationToken)
         {
             var value = await _repository.GetByIdAsync(request.Id);
-            if (value == null)
-            {
-                // Null bir değere erişildiğinde uygun bir yanıt veya hata fırlatabilirsiniz
-                throw new Exception(nameof(About));
-            }
-
             return new GetAboutByIdQueryResult()
             {
                 Id = value.AboutID,

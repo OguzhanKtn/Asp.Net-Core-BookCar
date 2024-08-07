@@ -12,9 +12,9 @@ namespace Application.Features.CQRS.Queries.BannerQueries
     {
         public int Id { get; set; }
 
-        public GetBannerByIdQuery(int ıd)
+        public GetBannerByIdQuery(int id)
         {
-            Id = ıd;
+            Id = id;
         }
     }
 }
