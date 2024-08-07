@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Features.CQRS.Results.BannerResults
+namespace Dto.BannerDtos
 {
-    public class GetBannerQueryResult
+    public class UpdateBannerDto
     {
         public int Id { get; set; }
         public string Title { get; set; }

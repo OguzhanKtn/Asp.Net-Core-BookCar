@@ -18,8 +18,15 @@ namespace Application.Features.CQRS.Handlers.AboutHandlers
         public async Task<GetAboutByIdQueryResult> Handle(GetAboutByIdQuery request, CancellationToken cancellationToken)
         {
             var value = await _repository.GetByIdAsync(request.Id);
+            if (value == null)
+            {
+                // Null bir değere erişildiğinde uygun bir yanıt veya hata fırlatabilirsiniz
+                throw new Exception(nameof(About));
+            }
+
             return new GetAboutByIdQueryResult()
             {
+                Id = value.AboutID,
                 Title = value.Title,
                 Description = value.Description,
                 ImageUrl = value.ImageUrl,

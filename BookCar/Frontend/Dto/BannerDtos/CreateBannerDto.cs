@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Features.CQRS.Results.BannerResults
+namespace Dto.BannerDtos
 {
-    public class GetBannerQueryResult
+    public class CreateBannerDto
     {
-        public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public string VideoDescription { get; set; }

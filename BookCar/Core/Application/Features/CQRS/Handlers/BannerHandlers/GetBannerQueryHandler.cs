@@ -20,6 +20,7 @@ namespace Application.Features.CQRS.Handlers.BannerHandlers
             var values = await _repository.GetAllAsync();
             return values.Select(x => new GetBannerQueryResult()
             {
+                Id = x.BannerID,
                 Title = x.Title,
                 Description = x.Description,
                 VideoDescription = x.VideoDescription,

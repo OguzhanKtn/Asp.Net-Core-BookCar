@@ -25,6 +25,7 @@ namespace Application.Features.CQRS.Handlers.BannerHandlers
             var value = await _repository.GetByIdAsync(request.Id);
             return new GetBannerByIdQueryResult()
             {
+                Id = value.BannerID,
                 Title = value.Title,
                 Description = value.Description,
                 VideoDescription = value.VideoDescription,

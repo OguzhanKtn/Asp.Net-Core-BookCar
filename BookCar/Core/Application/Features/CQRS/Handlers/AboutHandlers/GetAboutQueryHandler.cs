@@ -25,6 +25,7 @@ namespace Application.Features.CQRS.Handlers.AboutHandlers
             var values = await _repository.GetAllAsync();
             return values.Select(x => new GetAboutQueryResult
             {
+                Id = x.AboutID,
                 Title = x.Title,
                 Description = x.Description,
                 ImageUrl = x.ImageUrl

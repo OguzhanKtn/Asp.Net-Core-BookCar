@@ -4,14 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Features.CQRS.Results.BannerResults
+namespace Dto.AboutDtos
 {
-    public class GetBannerQueryResult
+    public class UpdateAboutDto
     {
         public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public string VideoDescription { get; set; }
-        public string VideoUrl { get; set; }
+        public string ImageUrl { get; set; }
     }
 }
