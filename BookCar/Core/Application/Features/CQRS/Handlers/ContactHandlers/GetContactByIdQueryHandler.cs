@@ -22,6 +22,7 @@ namespace Application.Features.CQRS.Handlers.ContactHandlers
 
             return new GetContactByIdQueryResult()
             {
+                ContactID = value.ContactID,
                 Name = value.Name,
                 Phone = value.Phone,
                 Email = value.Email,

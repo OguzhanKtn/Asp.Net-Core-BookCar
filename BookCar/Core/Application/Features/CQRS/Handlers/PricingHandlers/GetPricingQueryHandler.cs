@@ -25,6 +25,7 @@ namespace Application.Features.CQRS.Handlers.PricingHandlers
             var values = await _repository.GetAllAsync();
             return values.Select(x => new GetPricingQueryResult()
             {
+                Id = x.PricingID,
                 Name = x.Name,
             }).ToList();
         }

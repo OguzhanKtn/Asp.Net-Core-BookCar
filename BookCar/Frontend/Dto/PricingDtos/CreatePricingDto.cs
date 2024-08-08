@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Features.CQRS.Results.PricingResults
+namespace Dto.PricingDtos
 {
-    public class GetPricingQueryResult
+    public class CreatePricingDto
     {
-        public int Id { get; set; }
         public string Name { get; set; }
     }
 }

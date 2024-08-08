@@ -26,6 +26,7 @@ namespace Application.Features.CQRS.Handlers.ContactHandlers
 
           return  values.Select(x => new GetContactQueryResult()
             {
+                ContactID = x.ContactID,
                 Name = x.Name,
                 Phone = x.Phone,
                 Message = x.Message,
