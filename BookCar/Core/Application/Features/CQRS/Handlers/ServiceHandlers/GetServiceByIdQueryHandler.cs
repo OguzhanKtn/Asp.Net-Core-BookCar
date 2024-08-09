@@ -25,6 +25,7 @@ namespace Application.Features.CQRS.Handlers.ServiceHandlers
             var value = await _repository.GetByIdAsync(request.Id);
             return new GetServiceByIdQueryResult()
             {
+                Id = value.ServiceID,
                 Title = value.Title,
                 Description = value.Description,
                 IconUrl = value.IconUrl,

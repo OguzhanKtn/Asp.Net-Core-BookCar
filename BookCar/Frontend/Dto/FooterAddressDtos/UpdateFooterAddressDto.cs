@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Features.CQRS.Results.ServiceResults
+namespace Dto.FooterAddressDtos
 {
-    public class GetServiceQueryResult
+    public class UpdateFooterAddressDto
     {
         public int Id { get; set; }
-        public string Title { get; set; }
         public string Description { get; set; }
-        public string IconUrl { get; set; }
+        public string Address { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; }
     }
 }

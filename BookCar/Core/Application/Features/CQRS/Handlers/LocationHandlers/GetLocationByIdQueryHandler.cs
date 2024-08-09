@@ -25,6 +25,7 @@ namespace Application.Features.CQRS.Handlers.LocationHandlers
             var value = await _repository.GetByIdAsync(request.Id);
             return new GetLocationByIdQueryResult()
             {
+                Id = value.LocationID,
                 Name = value.Name,
             };
         }

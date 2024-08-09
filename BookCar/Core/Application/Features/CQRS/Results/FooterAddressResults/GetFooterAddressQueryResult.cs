@@ -8,6 +8,7 @@ namespace Application.Features.CQRS.Results.FooterAddressResults
 {
     public class GetFooterAddressQueryResult
     {
+        public int Id { get; set; }
         public string Description { get; set; }
         public string Address { get; set; }
         public string Phone { get; set; }

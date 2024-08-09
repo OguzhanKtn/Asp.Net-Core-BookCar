@@ -25,6 +25,7 @@ namespace Application.Features.CQRS.Handlers.FooterAddressHandlers
             var value = await _repository.GetByIdAsync(request.Id);
             return new GetFooterAddressByIdQueryResult()
             {
+                Id = value.FooterAdressID,
                 Description = value.Description,
                 Phone = value.Phone,
                 Email = value.Email,

@@ -26,6 +26,7 @@ namespace Application.Features.CQRS.Handlers.TestimonialHandlers
 
             return values.Select(x => new GetTestimonialQueryResult()
             {
+                Id = x.TestimonialID,
                 Name = x.Name,
                 Title = x.Title,
                 ImageUrl = x.ImageUrl,

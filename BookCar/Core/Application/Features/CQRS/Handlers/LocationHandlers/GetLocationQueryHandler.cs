@@ -25,6 +25,7 @@ namespace Application.Features.CQRS.Handlers.LocationHandlers
             var values = await _repository.GetAllAsync();
            return values.Select(x => new GetLocationQueryResult()
             {
+               Id = x.LocationID,
                 Name = x.Name,
             }).ToList();
         }

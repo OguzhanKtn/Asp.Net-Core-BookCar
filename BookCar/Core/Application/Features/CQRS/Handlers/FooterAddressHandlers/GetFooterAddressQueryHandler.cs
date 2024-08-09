@@ -26,6 +26,7 @@ namespace Application.Features.CQRS.Handlers.FooterAddressHandlers
 
             return values.Select(x => new GetFooterAddressQueryResult()
             {
+                Id = x.FooterAdressID,
                 Description = x.Description,
                 Address = x.Address,
                 Phone = x.Phone,

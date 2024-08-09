@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Features.CQRS.Results.TestimonialResults
+namespace Dto.TestimonialDtos
 {
-    public class GetTestimonialQueryResult
+    public class CreateTestimonialDto
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public string Title { get; set; }
         public string Comment { get; set; }

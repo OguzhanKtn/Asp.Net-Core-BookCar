@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Features.CQRS.Results.ServiceResults
+namespace Dto.ServiceDtos
 {
-    public class GetServiceQueryResult
+    public class CreateServiceDto
     {
-        public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public string IconUrl { get; set; }

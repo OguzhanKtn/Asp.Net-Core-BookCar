@@ -25,6 +25,7 @@ namespace Application.Features.CQRS.Handlers.TestimonialHandlers
             var value = await _repository.GetByIdAsync(request.Id);
             return new GetTestimonialByIdQueryResult()
             {
+                Id = value.TestimonialID,
                 Name = value.Name,
                 Title = value.Title,
                 ImageUrl = value.ImageUrl,

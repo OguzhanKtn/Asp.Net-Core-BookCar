@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Features.CQRS.Results.FooterAddressResults
+namespace Dto.FooterAddressDtos
 {
-    public class GetFooterAddressByIdQueryResult
+    public class CreateFooterAddressDto
     {
-        public int Id { get; set; }
         public string Description { get; set; }
         public string Address { get; set; }
         public string Phone { get; set; }
