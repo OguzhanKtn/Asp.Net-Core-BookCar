@@ -1,6 +1,6 @@
 ﻿using Application.Features.CQRS.Queries.CarPricingQueries;
 using Application.Features.CQRS.Results.CarPricingResults;
-using Application.Interfaces;
+using Application.Interfaces.CarInterfaces;
 using MediatR;
 using System;
 using System.Collections.Generic;

@@ -11,10 +11,15 @@ using Application.Features.CQRS.Handlers.LocationHandlers;
 using Application.Features.CQRS.Handlers.PricingHandlers;
 using Application.Features.CQRS.Handlers.ServiceHandlers;
 using Application.Features.CQRS.Handlers.SocialMediaHandlers;
+using Application.Features.CQRS.Handlers.StatisticsHandlers;
 using Application.Features.CQRS.Handlers.TestimonialHandlers;
 using Application.Interfaces;
+using Application.Interfaces.CarInterfaces;
+using Application.Interfaces.StatisticsInterfaces;
 using Persistence.Context;
 using Persistence.Repositories;
+using Persistence.Repositories.CarRepositories;
+using Persistence.Repositories.StatisticsRepositories;
 using System.Reflection;
 
 namespace WebApi
@@ -26,6 +31,7 @@ namespace WebApi
             services.AddScoped<CarBookContext>();
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped(typeof(ICarRepository), typeof(CarRepository));
+            services.AddScoped(typeof(IStatisticsRepository), typeof(StatisticsRepository));
             services.AddScoped(typeof(ICarPricingRepository), typeof(CarPricingRepository));
             services.AddMediatR(cfg =>
             {
@@ -109,6 +115,8 @@ namespace WebApi
                 cfg.RegisterServicesFromAssembly(typeof(RemoveTestimonialCommandHandler).Assembly);
                 cfg.RegisterServicesFromAssembly(typeof(GetTestimonialQueryHandler).Assembly);
                 cfg.RegisterServicesFromAssembly(typeof(GetTestimonialByIdQueryHandler).Assembly);
+
+                cfg.RegisterServicesFromAssembly(typeof(GetCarCountQueryHandler).Assembly);
 
 
             });

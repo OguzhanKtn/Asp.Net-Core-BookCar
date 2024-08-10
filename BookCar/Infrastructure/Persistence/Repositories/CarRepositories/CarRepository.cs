@@ -1,4 +1,4 @@
-﻿using Application.Interfaces;
+﻿using Application.Interfaces.CarInterfaces;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Context;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Persistence.Repositories
+namespace Persistence.Repositories.CarRepositories
 {
     public class CarRepository : ICarRepository
     {
@@ -21,7 +21,7 @@ namespace Persistence.Repositories
 
         public IEnumerable<Car> GetCarsWithBrands()
         {
-            return _context.cars.Include(x=> x.Brand).ToList();
+            return _context.cars.Include(x => x.Brand).ToList();
         }
 
         public IQueryable<Car> GetLast5CarsWithBrands()

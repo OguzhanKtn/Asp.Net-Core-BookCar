@@ -1,6 +1,7 @@
 ﻿using Application.Features.CQRS.Commands.CarCommands;
 using Application.Features.CQRS.Queries.CarPricingQueries;
 using Application.Features.CQRS.Queries.CarQueries;
+using Application.Features.CQRS.Queries.StatisticsQueries;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

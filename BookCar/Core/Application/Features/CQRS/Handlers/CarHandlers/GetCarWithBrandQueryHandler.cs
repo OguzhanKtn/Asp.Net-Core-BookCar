@@ -1,6 +1,6 @@
 ﻿using Application.Features.CQRS.Queries.CarQueries;
 using Application.Features.CQRS.Results.CarResults;
-using Application.Interfaces;
+using Application.Interfaces.CarInterfaces;
 using Domain.Entities;
 using MediatR;
 
