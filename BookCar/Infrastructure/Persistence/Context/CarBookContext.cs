@@ -35,5 +35,8 @@ namespace Persistence.Context
         public DbSet<Service> services { get; set; }
         public DbSet<SocialMedia> socialMedias { get; set; }
         public DbSet<Testimonial> testimonials { get; set; }
+        public DbSet<RentACar> rentACars { get; set; }
+        public DbSet<RentACarProcess> rentACarProcesses { get; set; }
+        public DbSet<Customer> customers { get; set; }
     }
 }
