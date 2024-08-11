@@ -117,6 +117,19 @@ namespace WebApi
                 cfg.RegisterServicesFromAssembly(typeof(GetTestimonialByIdQueryHandler).Assembly);
 
                 cfg.RegisterServicesFromAssembly(typeof(GetCarCountQueryHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(GetBrandNameByMaxCarQueryHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(GetAvgRentPriceForDailyQueryHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(GetAvgRentPriceForMonthlyQueryHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(GetAvgRentPriceForWeeklyQueryHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(GetBrandCountQueryHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(GetCarBrandAndModelByRentPriceDailyMaxQueryHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(GetCarBrandAndModelByRentPriceDailyMinQueryHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(GetCarCountByFuelDieselQueryHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(GetCarCountByFuelElectricQueryHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(GetCarCountByFuelGasolineQueryHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(GetCarCountByKmSmallerThan1000QueryHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(GetCarCountByTransmissionIsAutoQueryHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(GetLocationCountQueryHandler).Assembly);
 
 
             });

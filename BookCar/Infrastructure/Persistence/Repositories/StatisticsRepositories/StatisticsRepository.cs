@@ -1,11 +1,7 @@
 ﻿using Application.Interfaces.StatisticsInterfaces;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Context;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Persistence.Repositories.StatisticsRepositories
 {
@@ -20,7 +16,20 @@ namespace Persistence.Repositories.StatisticsRepositories
 
         public string BrandNameByMaxCar()
         {
-            throw new NotImplementedException();
+            //select top(1) BrandID, count(*) as NumberOfBrand from cars group by BrandID order by NumberOfBrand desc
+            var result = _context.cars
+                .GroupBy(x => x.BrandID)
+                .Select(y => new
+            {
+                  BrandID =  y.Key,
+                  NumberOfBrand = y.Count()
+            })
+            .OrderByDescending(x => x.NumberOfBrand).FirstOrDefault();
+
+            int brandID = result.BrandID;
+
+            string brandName = _context.brands.Where(x => x.BrandID == brandID).Select(y => y.Name).FirstOrDefault();
+            return brandName;
         }
 
         public decimal GetAvgRentPriceForDaily()
@@ -64,7 +73,7 @@ namespace Persistence.Repositories.StatisticsRepositories
             return brandModel;
         }
 
-        public string GetCarBrandAndModelByRentPriceDailyMin()
+        public string GetCarBrandAndModelByRentPriceDailyMin() 
         {
             int pricingID = _context.pricings.Where(x => x.Name.Equals("Günlük")).Select(y => y.PricingID).FirstOrDefault();
             decimal amount = _context.carPricings.Where(x => x.PricingID == pricingID).Select(x => x.Amount).Min();
