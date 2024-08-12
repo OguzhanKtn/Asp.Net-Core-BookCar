@@ -1,4 +1,4 @@
-﻿
+﻿@model ResultLocationDto
 @{
     ViewData["Title"] = "Index";
     Layout = null;
@@ -7,7 +7,6 @@
 <!DOCTYPE html>
 <html lang="en">
 @await Component.InvokeAsync("_HeadUILayoutComponentPartial")
-
 <body>
     @await Component.InvokeAsync("_NavbarUILayoutComponentPartial")
     @await Component.InvokeAsync("_DefaultCoverUILayoutComponentPartial")
@@ -21,8 +20,8 @@
                             <form action="#" class="request-form ftco-animate bg-primary">
                                 <h2>Make your trip</h2>
                                 <div class="form-group">
-                                    <label for="" class="label">Pick-up location</label>
-                                    <input type="text" class="form-control" placeholder="City, Airport, Station, etc">
+                                    <label for="" class="label">Pick-up location</label><br />
+                                    @Html.DropDownListFor(x=>x.Id,(List<SelectListItem>)ViewBag.v,new{@class="form-control"})
                                 </div>
                                 <div class="form-group">
                                     <label for="" class="label">Drop-off location</label>

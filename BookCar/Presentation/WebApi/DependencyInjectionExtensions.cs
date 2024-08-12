@@ -9,16 +9,19 @@ using Application.Features.CQRS.Handlers.FooterAddressHandlers;
 using Application.Features.CQRS.Handlers.GetCarPricingHandlers;
 using Application.Features.CQRS.Handlers.LocationHandlers;
 using Application.Features.CQRS.Handlers.PricingHandlers;
+using Application.Features.CQRS.Handlers.RentACarHandlers;
 using Application.Features.CQRS.Handlers.ServiceHandlers;
 using Application.Features.CQRS.Handlers.SocialMediaHandlers;
 using Application.Features.CQRS.Handlers.StatisticsHandlers;
 using Application.Features.CQRS.Handlers.TestimonialHandlers;
 using Application.Interfaces;
 using Application.Interfaces.CarInterfaces;
+using Application.Interfaces.RentACarInterfaces;
 using Application.Interfaces.StatisticsInterfaces;
 using Persistence.Context;
 using Persistence.Repositories;
 using Persistence.Repositories.CarRepositories;
+using Persistence.Repositories.RentACarRepositories;
 using Persistence.Repositories.StatisticsRepositories;
 using System.Reflection;
 
@@ -33,6 +36,7 @@ namespace WebApi
             services.AddScoped(typeof(ICarRepository), typeof(CarRepository));
             services.AddScoped(typeof(IStatisticsRepository), typeof(StatisticsRepository));
             services.AddScoped(typeof(ICarPricingRepository), typeof(CarPricingRepository));
+            services.AddScoped(typeof(IRentACarRepository), typeof(RentACarRepository));
             services.AddMediatR(cfg =>
             {
                 cfg.RegisterServicesFromAssembly(typeof(CreateAboutCommandHandler).Assembly);
@@ -130,6 +134,7 @@ namespace WebApi
                 cfg.RegisterServicesFromAssembly(typeof(GetCarCountByKmSmallerThan1000QueryHandler).Assembly);
                 cfg.RegisterServicesFromAssembly(typeof(GetCarCountByTransmissionIsAutoQueryHandler).Assembly);
                 cfg.RegisterServicesFromAssembly(typeof(GetLocationCountQueryHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(GetRentACarQueryHandler).Assembly);
 
 
             });
