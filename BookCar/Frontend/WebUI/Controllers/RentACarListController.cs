@@ -16,19 +16,8 @@ namespace WebUI.Controllers
 
         public async Task<IActionResult> Index(int id)
         {
-            var bookPickDate = TempData["bookPickDate"];
-            var bookOffDate = TempData["bookOffDate"];
-            var timePick = TempData["timePick"];
-            var timeOff = TempData["timeOff"];
             var locationID = TempData["locationID"];
-
             id = Convert.ToInt32(locationID);
-
-            ViewBag.bookPickDate = bookPickDate;
-            ViewBag.bookOffDate = bookOffDate;
-            ViewBag.timePick = timePick;
-            ViewBag.timeOff = timeOff;
-            ViewBag.locationID = locationID;
 
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync($"https://localhost:44380/api/RentACars?locationID={id}&available=true");
