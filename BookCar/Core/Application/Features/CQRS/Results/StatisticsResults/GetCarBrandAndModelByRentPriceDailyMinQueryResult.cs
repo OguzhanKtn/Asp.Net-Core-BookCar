@@ -8,6 +8,6 @@ namespace Application.Features.CQRS.Results.StatisticsResults
 {
     public class GetCarBrandAndModelByRentPriceDailyMinQueryResult
     {
-        public string BrandModel { get; set; }
+        public string carBrandAndModelByRentPriceDailyMin { get; set; }
     }
 }

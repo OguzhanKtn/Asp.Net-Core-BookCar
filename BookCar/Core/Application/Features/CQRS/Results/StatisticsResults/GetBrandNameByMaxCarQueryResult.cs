@@ -8,6 +8,6 @@ namespace Application.Features.CQRS.Results.StatisticsResults
 {
     public class GetBrandNameByMaxCarQueryResult
     {
-        public string Name { get; set; }
+        public string brandNameByMaxCar { get; set; }
     }
 }

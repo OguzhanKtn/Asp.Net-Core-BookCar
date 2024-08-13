@@ -26,9 +26,8 @@ namespace WebUI.Areas.Admin.Controllers
             {
                 int v1 = random.Next(0, 101);
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                dynamic jsonObject = JsonConvert.DeserializeObject(jsonData);
-                var carCount = jsonObject.result.carCount;
-                ViewBag.v = carCount;
+                var values = JsonConvert.DeserializeObject<ResultStatisticsDto>(jsonData);
+                ViewBag.v = values.carCount;
                 ViewBag.v1 = v1;
             }
             #endregion
@@ -39,9 +38,9 @@ namespace WebUI.Areas.Admin.Controllers
             {
                 int locationCountRandom = random.Next(0, 101);
                 var jsonData2 = await responseMessage2.Content.ReadAsStringAsync();
-                dynamic jsonObject = JsonConvert.DeserializeObject(jsonData2);
-                var locationCount = jsonObject.result.locationCount;
-                ViewBag.locationCount = locationCount;
+                var values = JsonConvert.DeserializeObject<ResultStatisticsDto>(jsonData2);
+                
+                ViewBag.locationCount = values.locationCount;
                 ViewBag.locationCountRandom = locationCountRandom;
             }
             #endregion
@@ -52,9 +51,9 @@ namespace WebUI.Areas.Admin.Controllers
             {
                 int brandCountRandom = random.Next(0, 101);
                 var jsonData3 = await responseMessage3.Content.ReadAsStringAsync();
-                dynamic jsonObject = JsonConvert.DeserializeObject(jsonData3);
-                var brandCount = jsonObject.result.brandCount;
-                ViewBag.brandCount = brandCount;
+                var values = JsonConvert.DeserializeObject<ResultStatisticsDto>(jsonData3);
+                
+                ViewBag.brandCount = values.brandCount;
                 ViewBag.brandCountRandom = brandCountRandom;
             }
             #endregion
@@ -65,8 +64,8 @@ namespace WebUI.Areas.Admin.Controllers
             {
                 int avgRentPriceForDailyRandom = random.Next(0, 101);
                 var jsonData4 = await responseMessage4.Content.ReadAsStringAsync();
-                dynamic jsonObject = JsonConvert.DeserializeObject(jsonData4);
-                ViewBag.avgRentPriceForDaily = jsonObject.result.avgRentPriceForDaily.ToString("0.00"); ;
+                var values = JsonConvert.DeserializeObject<ResultStatisticsDto>(jsonData4);
+                ViewBag.avgRentPriceForDaily = values.avgRentPriceForDaily.ToString("0.00"); ;
                 ViewBag.avgRentPriceForDailyRandom = avgRentPriceForDailyRandom;
             }
             #endregion
@@ -77,8 +76,8 @@ namespace WebUI.Areas.Admin.Controllers
             {
                 int avgRentPriceForWeeklyRandom = random.Next(0, 101);
                 var jsonData5 = await responseMessage5.Content.ReadAsStringAsync();
-                dynamic jsonObject = JsonConvert.DeserializeObject(jsonData5);
-                ViewBag.avgRentPriceForWeekly = jsonObject.result.avgRentPriceForWeekly.ToString("0.00");
+                var values = JsonConvert.DeserializeObject<ResultStatisticsDto>(jsonData5);
+                ViewBag.avgRentPriceForWeekly = values.avgRentPriceForWeekly.ToString("0.00");
                 ViewBag.avgRentPriceForWeeklyRandom = avgRentPriceForWeeklyRandom;
             }
             #endregion
@@ -89,8 +88,8 @@ namespace WebUI.Areas.Admin.Controllers
             {
                 int avgRentPriceForMonthlyRandom = random.Next(0, 101);
                 var jsonData6 = await responseMessage6.Content.ReadAsStringAsync();
-                dynamic jsonObject = JsonConvert.DeserializeObject(jsonData6);
-                ViewBag.avgRentPriceForMonthly = jsonObject.result.avgRentPriceForMonthly.ToString("0.00");
+                var values = JsonConvert.DeserializeObject<ResultStatisticsDto>(jsonData6);
+                ViewBag.avgRentPriceForMonthly = values.avgRentPriceForMonthly.ToString("0.00");
                 ViewBag.avgRentPriceForMonthlyRandom = avgRentPriceForMonthlyRandom;
             }
             #endregion
@@ -101,8 +100,8 @@ namespace WebUI.Areas.Admin.Controllers
             {
                 int carCountByTranmissionIsAutoRandom = random.Next(0, 101);
                 var jsonData7 = await responseMessage7.Content.ReadAsStringAsync();
-                dynamic jsonObject = JsonConvert.DeserializeObject(jsonData7);
-                ViewBag.carCountByTranmissionIsAuto = jsonObject.result.carCountByTransmissionIsAuto;
+                var values = JsonConvert.DeserializeObject<ResultStatisticsDto>(jsonData7);
+                ViewBag.carCountByTranmissionIsAuto = values.carCountByTransmissionIsAuto;
                 ViewBag.carCountByTranmissionIsAutoRandom = carCountByTranmissionIsAutoRandom;
             }
             #endregion
@@ -113,8 +112,8 @@ namespace WebUI.Areas.Admin.Controllers
             {
                 int brandNameByMaxCarRandom = random.Next(0, 101);
                 var jsonData8 = await responseMessage8.Content.ReadAsStringAsync();
-                dynamic jsonObject = JsonConvert.DeserializeObject(jsonData8);
-                ViewBag.brandNameByMaxCar = jsonObject.result.name;
+                var values = JsonConvert.DeserializeObject<ResultStatisticsDto>(jsonData8);
+                ViewBag.brandNameByMaxCar = values.brandNameByMaxCar;
                 ViewBag.brandNameByMaxCarRandom = brandNameByMaxCarRandom;
             }
             #endregion
@@ -123,11 +122,11 @@ namespace WebUI.Areas.Admin.Controllers
             var responseMessage9 = await client.GetAsync("https://localhost:44380/api/Statistics/GetCarCountByKmSmallerThan1000");
             if (responseMessage9.IsSuccessStatusCode)
             {
-                int carCountByKmSmallerThen1000Random = random.Next(0, 101);
+                int carCountByKmSmallerThan1000Random = random.Next(0, 101);
                 var jsonData9 = await responseMessage9.Content.ReadAsStringAsync();
-                dynamic jsonObject = JsonConvert.DeserializeObject(jsonData9);
-                ViewBag.carCountByKmSmallerThen1000 = jsonObject.result.carCountByKmSmallerThan1000;
-                ViewBag.carCountByKmSmallerThen1000Random = carCountByKmSmallerThen1000Random;
+                var values = JsonConvert.DeserializeObject<ResultStatisticsDto>(jsonData9);
+                ViewBag.carCountByKmSmallerThen1000 = values.carCountByKmSmallerThan1000;
+                ViewBag.carCountByKmSmallerThen1000Random = carCountByKmSmallerThan1000Random;
             }
             #endregion
 
@@ -137,8 +136,8 @@ namespace WebUI.Areas.Admin.Controllers
             {
                 int carCountByFuelGasolineOrDieselRandom = random.Next(0, 101);
                 var jsonData10 = await responseMessage10.Content.ReadAsStringAsync();
-                dynamic jsonObject = JsonConvert.DeserializeObject(jsonData10);
-                ViewBag.carCountByFuelGasoline = jsonObject.result.carCountByFuelGasoline;
+                var values = JsonConvert.DeserializeObject<ResultStatisticsDto>(jsonData10);
+                ViewBag.carCountByFuelGasoline = values.carCountByFuelGasoline;
                 ViewBag.carCountByFuelGasolineRandom = carCountByFuelGasolineOrDieselRandom;
             }
             #endregion
@@ -149,8 +148,8 @@ namespace WebUI.Areas.Admin.Controllers
             {
                 int carCountByFuelDieselRandom = random.Next(0, 101);
                 var jsonData11 = await responseMessage11.Content.ReadAsStringAsync();
-                dynamic jsonObject = JsonConvert.DeserializeObject(jsonData11);
-                ViewBag.carCountByFuelDiesel = jsonObject.result.carCountByFuelDiesel;
+                var values = JsonConvert.DeserializeObject<ResultStatisticsDto>(jsonData11);
+                ViewBag.carCountByFuelDiesel = values.carCountByFuelDiesel;
                 ViewBag.carCountByFuelDieselRandom = carCountByFuelDieselRandom;
             }
             #endregion
@@ -161,8 +160,8 @@ namespace WebUI.Areas.Admin.Controllers
             {
                 int carBrandAndModelByRentPriceDailyMaxRandom = random.Next(0, 101);
                 var jsonData12 = await responseMessage12.Content.ReadAsStringAsync();
-                dynamic jsonObject = JsonConvert.DeserializeObject(jsonData12);
-                ViewBag.carBrandAndModelByRentPriceDailyMax = jsonObject.result.brandModel;
+                var values = JsonConvert.DeserializeObject<ResultStatisticsDto>(jsonData12);
+                ViewBag.carBrandAndModelByRentPriceDailyMax = values.carBrandAndModelByRentPriceDailyMax;
                 ViewBag.carBrandAndModelByRentPriceDailyMaxRandom = carBrandAndModelByRentPriceDailyMaxRandom;
             }
             #endregion
@@ -173,8 +172,8 @@ namespace WebUI.Areas.Admin.Controllers
             {
                 int carBrandAndModelByRentPriceDailyMinRandom = random.Next(0, 101);
                 var jsonData13 = await responseMessage13.Content.ReadAsStringAsync();
-                dynamic jsonObject = JsonConvert.DeserializeObject(jsonData13);
-                ViewBag.carBrandAndModelByRentPriceDailyMin = jsonObject.result.brandModel;
+                var values = JsonConvert.DeserializeObject<ResultStatisticsDto>(jsonData13);
+                ViewBag.carBrandAndModelByRentPriceDailyMin = values.carBrandAndModelByRentPriceDailyMin;
                 ViewBag.carBrandAndModelByRentPriceDailyMinRandom = carBrandAndModelByRentPriceDailyMinRandom;
             }
             #endregion

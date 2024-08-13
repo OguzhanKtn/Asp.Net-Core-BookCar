@@ -17,89 +17,89 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("GetCarCount")]
-        public IActionResult GetCarCount()
+        public async Task<IActionResult> GetCarCount()
         {
-            var values = _mediator.Send(new GetCarCountQuery());
+            var values = await _mediator.Send(new GetCarCountQuery());
             return Ok(values);
         }
 
         [HttpGet("GetBrandNameByMaxCar")]
-        public IActionResult GetBrandNameByMaxCar()
+        public async Task<IActionResult> GetBrandNameByMaxCar()
         {
-            var value = _mediator.Send(new GetBrandNameByMaxCarQuery());
+            var value =await _mediator.Send(new GetBrandNameByMaxCarQuery());
             return Ok(value);
         }
         [HttpGet("GetAvgRentPriceForDaily")]
-        public IActionResult GetAvgRentPriceForDaily()
+        public async Task<IActionResult> GetAvgRentPriceForDaily()
         {
-            var value = _mediator.Send(new GetAvgRentPriceForDailyQuery());
+            var value = await _mediator.Send(new GetAvgRentPriceForDailyQuery());
             return Ok(value);
         }
 
         [HttpGet("GetAvgRentPriceForMonthly")]
-        public IActionResult GetAvgRentPriceForMonthly()
+        public async Task<IActionResult> GetAvgRentPriceForMonthly()
         {
-            var value = _mediator.Send(new GetAvgRentPriceForMonthlyQuery());
+            var value = await _mediator.Send(new GetAvgRentPriceForMonthlyQuery());
             return Ok(value);
         }
         [HttpGet("GetAvgRentPriceForWeekly")]
-        public IActionResult GetAvgRentPriceForWeekly()
+        public async Task<IActionResult> GetAvgRentPriceForWeekly()
         {
-            var value = _mediator.Send(new GetAvgRentPriceForWeeklyQuery());
+            var value = await _mediator.Send(new GetAvgRentPriceForWeeklyQuery());
             return Ok(value);
         }
         [HttpGet("GetBrandCount")]
-        public IActionResult GetBrandCount()
+        public async Task<IActionResult> GetBrandCount()
         {
-            var value = _mediator.Send(new GetBrandCountQuery());
+            var value = await _mediator.Send(new GetBrandCountQuery());
             return Ok(value);
         } 
         [HttpGet("GetCarBrandAndModelByRentPriceDailyMax")]
-        public IActionResult GetCarBrandAndModelByRentPriceDailyMax()
+        public async Task<IActionResult> GetCarBrandAndModelByRentPriceDailyMax()
         {
-            var value = _mediator.Send(new GetCarBrandAndModelByRentPriceDailyMaxQuery());
+            var value = await _mediator.Send(new GetCarBrandAndModelByRentPriceDailyMaxQuery());
             return Ok(value);
         }
         [HttpGet("GetCarBrandAndModelByRentPriceDailyMin")]
-        public IActionResult GetCarBrandAndModelByRentPriceDailyMin()
+        public async Task<IActionResult> GetCarBrandAndModelByRentPriceDailyMin()
         {
-            var value = _mediator.Send(new GetCarBrandAndModelByRentPriceDailyMinQuery());
+            var value = await _mediator.Send(new GetCarBrandAndModelByRentPriceDailyMinQuery());
             return Ok(value);
         }
         [HttpGet("GetCarCountByFuelDiesel")]
-        public IActionResult GetCarCountByFuelDiesel()
+        public async Task<IActionResult> GetCarCountByFuelDiesel()
         {
-            var value = _mediator.Send(new GetCarCountByFuelDieselQuery());
+            var value = await _mediator.Send(new GetCarCountByFuelDieselQuery());
             return Ok(value);
         }
         [HttpGet("GetCarCountByFuelElectric")]
-        public IActionResult GetCarCountByFuelElectric()
+        public async Task<IActionResult> GetCarCountByFuelElectric()
         {
-            var value = _mediator.Send(new GetCarCountByFuelElectricQuery());
+            var value = await _mediator.Send(new GetCarCountByFuelElectricQuery());
             return Ok(value);
         } 
         [HttpGet("GetCarCountByFuelGasoline")]
-        public IActionResult GetCarCountByFuelGasoline()
+        public async Task<IActionResult> GetCarCountByFuelGasoline()
         {
-            var value = _mediator.Send(new GetCarCountByFuelGasolineQuery());
+            var value = await _mediator.Send(new GetCarCountByFuelGasolineQuery());
             return Ok(value);
         }
         [HttpGet("GetCarCountByKmSmallerThan1000")]
-        public IActionResult GetCarCountByKmSmallerThan1000()
+        public async Task<IActionResult> GetCarCountByKmSmallerThan1000()
         {
-            var value = _mediator.Send(new GetCarCountByKmSmallerThan1000Query());
+            var value = await _mediator.Send(new GetCarCountByKmSmallerThan1000Query());
             return Ok(value);
         }
         [HttpGet("GetCarCountByTransmissionIsAuto")]
-        public IActionResult GetCarCountByTransmissionIsAuto()
+        public async Task<IActionResult> GetCarCountByTransmissionIsAuto()
         {
-            var value = _mediator.Send(new GetCarCountByTransmissionIsAutoQuery());
+            var value = await _mediator.Send(new GetCarCountByTransmissionIsAutoQuery());
             return Ok(value);
         }
         [HttpGet("GetLocationCount")]
-        public IActionResult GetLocationCount()
+        public async Task<IActionResult> GetLocationCount()
         {
-            var value = _mediator.Send(new GetLocationCountQuery());
+            var value = await _mediator.Send(new GetLocationCountQuery());
             return Ok(value);
         }
     }

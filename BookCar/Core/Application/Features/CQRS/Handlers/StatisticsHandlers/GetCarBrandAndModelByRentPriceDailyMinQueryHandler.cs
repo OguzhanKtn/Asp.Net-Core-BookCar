@@ -24,7 +24,7 @@ namespace Application.Features.CQRS.Handlers.StatisticsHandlers
             var value = _repository.GetCarBrandAndModelByRentPriceDailyMin();
             return new GetCarBrandAndModelByRentPriceDailyMinQueryResult()
             {
-                BrandModel = value,
+                carBrandAndModelByRentPriceDailyMin = value,
             };
         }
     }

@@ -25,7 +25,7 @@ namespace Application.Features.CQRS.Handlers.StatisticsHandlers
 
             return new GetBrandNameByMaxCarQueryResult()
             {
-                Name = value
+                brandNameByMaxCar = value
             };
         }
     }
