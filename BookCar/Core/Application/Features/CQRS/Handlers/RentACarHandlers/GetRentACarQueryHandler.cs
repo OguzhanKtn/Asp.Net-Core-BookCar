@@ -4,6 +4,7 @@ using Application.Interfaces.RentACarInterfaces;
 using MediatR;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -22,11 +23,15 @@ namespace Application.Features.CQRS.Handlers.RentACarHandlers
 
         public async Task<List<GetRentACarQueryResult>> Handle(GetRentACarQuery request, CancellationToken cancellationToken)
         {
-            var values = _repository.GetByFilterAsync(x => x.LocationID == request.LocationID && x.Available == true);
-            return values.Select(x => new GetRentACarQueryResult()
+            var values = await _repository.GetByFilterAsync(x => x.LocationID == request.LocationID && x.Available == true);
+            var results = values.Select(y => new GetRentACarQueryResult
             {
-                CarID = x.CarID,
+                CarID = y.CarID,
+                Brand = y.Car.Brand.Name,
+                Model = y.Car.Model,
+                CoverImageUrl = y.Car.CoverImageUrl,
             }).ToList();
+            return results;
         }
     }
 }

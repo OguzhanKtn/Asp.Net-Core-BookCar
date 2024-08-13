@@ -1,5 +1,6 @@
 ﻿using Application.Interfaces.RentACarInterfaces;
 using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using Persistence.Context;
 using System;
 using System.Collections.Generic;
@@ -19,10 +20,10 @@ namespace Persistence.Repositories.RentACarRepositories
             _context = context;
         }
 
-        public List<RentACar> GetByFilterAsync(Expression<Func<RentACar, bool>> filter)
+        public async Task<List<RentACar>> GetByFilterAsync(Expression<Func<RentACar, bool>> filter)
         {
-            var values = _context.rentACars.Where(filter);
-            return values.ToList();
+            var values = await _context.rentACars.Where(filter).Include(x => x.Car).ThenInclude(y => y.Brand).ToListAsync();
+            return values;
         }
     }
 }

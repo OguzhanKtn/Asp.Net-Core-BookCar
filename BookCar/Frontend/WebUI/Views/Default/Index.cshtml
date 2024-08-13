@@ -10,36 +10,50 @@
 <body>
     @await Component.InvokeAsync("_NavbarUILayoutComponentPartial")
     @await Component.InvokeAsync("_DefaultCoverUILayoutComponentPartial")
-     
+     <style>
+
+    .request-form .form-control {
+
+        background: #1089FF !important;
+
+        color:white;
+
+    }
+
+</style>
     <section class="ftco-section ftco-no-pt bg-light">
         <div class="container">
             <div class="row no-gutters">
                 <div class="col-md-12	featured-top">
                     <div class="row no-gutters">
                         <div class="col-md-4 d-flex align-items-center">
-                            <form action="#" class="request-form ftco-animate bg-primary">
+                            <form method="post" class="request-form ftco-animate bg-primary">
                                 <h2>Make your trip</h2>
                                 <div class="form-group">
                                     <label for="" class="label">Pick-up location</label><br />
-                                    @Html.DropDownListFor(x=>x.Id,(List<SelectListItem>)ViewBag.v,new{@class="form-control"})
+                                    @Html.DropDownListFor(x=>x.Id,(List<SelectListItem>)ViewBag.v,new{@class="form-control",name="Id"})
                                 </div>
                                 <div class="form-group">
                                     <label for="" class="label">Drop-off location</label>
-                                    <input type="text" class="form-control" placeholder="City, Airport, Station, etc">
+                                    @Html.DropDownListFor(x => x.Id, (List<SelectListItem>)ViewBag.v, new { @class = "form-control", name = "locationID" })
                                 </div>
                                 <div class="d-flex">
                                     <div class="form-group mr-2">
                                         <label for="" class="label">Pick-up date</label>
-                                        <input type="text" class="form-control" id="book_pick_date" placeholder="Date">
+                                        <input type="text" class="form-control" name="book_pick_date" id="book_pick_date" placeholder="Date">
                                     </div>
                                     <div class="form-group ml-2">
                                         <label for="" class="label">Drop-off date</label>
-                                        <input type="text" class="form-control" id="book_off_date" placeholder="Date">
+                                        <input type="text" class="form-control" name="book_off_date" id="book_off_date" placeholder="Date">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="" class="label">Pick-up time</label>
-                                    <input type="text" class="form-control" id="time_pick" placeholder="Time">
+                                    <input type="text" class="form-control" name="time_pick" id="time_pick" placeholder="Time">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="label">Drop-off time</label>
+                                    <input type="text" class="form-control" name="time_off" id="time_off" placeholder="Time">
                                 </div>
                                 <div class="form-group">
                                     <input type="submit" value="Rent A Car Now" class="btn btn-secondary py-3 px-4">

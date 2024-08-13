@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Features.CQRS.Results.RentACarResults
+namespace Dto.RentACarDtos
 {
-    public class GetRentACarQueryResult
+    public class FilterRentACarDto
     {
-        public int CarID { get; set; }
+        public int carID { get; set; }
         public string Brand { get; set; }
-        public decimal Amount { get; set; }
         public string Model { get; set; }
+        public decimal Amount { get; set; }
         public string CoverImageUrl { get; set; }
     }
 }
