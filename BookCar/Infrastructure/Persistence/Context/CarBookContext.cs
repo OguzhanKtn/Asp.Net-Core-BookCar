@@ -14,7 +14,7 @@ namespace Persistence.Context
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder
-                .UseSqlServer("Server = DESKTOP-S5STNHF; initial Catalog=CarBook; integrated security = true;trustservercertificate=true")
+                .UseSqlServer("Server = .; initial Catalog=CarBook; integrated security = true;trustservercertificate=true")
                 .EnableSensitiveDataLogging()
                    .LogTo(Console.WriteLine, LogLevel.Information);
         }
@@ -38,5 +38,22 @@ namespace Persistence.Context
         public DbSet<RentACar> rentACars { get; set; }
         public DbSet<RentACarProcess> rentACarProcesses { get; set; }
         public DbSet<Customer> customers { get; set; }
+        public DbSet<Reservation> reservations { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Reservation>()
+                .HasOne(x => x.PickUpLocation)
+                .WithMany(y => y.PickUpReservation)
+                .HasForeignKey(z => z.PickUpLocationID)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+
+            modelBuilder.Entity<Reservation>()
+                .HasOne(x => x.DropOffLocation)
+                .WithMany(y => y.DropOffReservation)
+                .HasForeignKey(z => z.DropOffLocationID)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+        }
+
     }
 }
