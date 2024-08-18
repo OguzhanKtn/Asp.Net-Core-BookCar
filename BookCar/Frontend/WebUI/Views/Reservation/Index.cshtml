@@ -4,14 +4,13 @@
     Layout = "~/Views/UILayout/Index.cshtml";
 }
 
-<h1>Index</h1><div class="col-md-12 block-9 mb-md-5">
-   
+<div class="col-md-12 block-9 mb-md-5"> 
     <form class="bg-light p-5 contact-form" method="post">
-        <h3 class="alert alert-success">Araç Rezervasyon Formu</h3>
+        <h3 class="alert alert-success">Car Reservation Form</h3>
         <br />
-            <input type="hidden" asp-for="CarID" value="@ViewBag.v3" class="form-control" placeholder="Your Car">
+            <input asp-for="CarID" value="@ViewBag.v3" class="form-control" placeholder="Your Car">
         <div class="form-group">
-            <input type="text" asp-for="Name" class="form-control" placeholder="Name>
+            <input type="text" asp-for="Name" class="form-control" placeholder="Name">
         </div>
         <div class="form-group">
             <input type="text" asp-for="Surname" class="form-control" placeholder="Surname">
@@ -23,10 +22,10 @@
             <input type="text" asp-for="Phone" class="form-control" placeholder="Phone">
         </div>
         <div class="form-group">
-            @Html.DropDownListFor(x=>x.DropOffLocationID,(List<SelectListItem>)ViewBag.v,new{@class="form-control"})
+            @Html.DropDownListFor(x => x.PickUpLocationID, (List<SelectListItem>)ViewBag.v, new { @class = "form-control" })
         </div>
         <div class="form-group">
-            @Html.DropDownListFor(x=>x.PickUpLocationID,(List<SelectListItem>)ViewBag.v,new{@class="form-control"})
+            @Html.DropDownListFor(x=>x.DropOffLocationID,(List<SelectListItem>)ViewBag.v,new{@class="form-control"})
         </div>
         <div class="form-group">
             <input type="text" asp-for="Age" class="form-control" placeholder="Age">
@@ -41,5 +40,4 @@
             <input type="submit" value="Send Reservation" class="btn btn-primary py-3 px-5">
         </div>
     </form>
-
-</div
+</div>
