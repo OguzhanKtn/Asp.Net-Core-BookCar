@@ -24,6 +24,7 @@ namespace Application.Features.CQRS.Handlers.GetCarPricingHandlers
             var values = _repository.GetCarPricingWithCars();
             return values.Select(x => new GetCarPricingQueryResult()
             {
+               CarID = x.CarID,
                Amount = x.Amount,
                Brand = x.Car.Brand.Name,
                CarPricingId = x.CarPricingID,

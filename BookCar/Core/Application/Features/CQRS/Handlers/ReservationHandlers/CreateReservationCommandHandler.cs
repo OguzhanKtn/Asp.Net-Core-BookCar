@@ -33,6 +33,7 @@ namespace Application.Features.CQRS.Handlers.ReservationHandlers
                 Age = request.Age,
                 DriverLicenseYear = request.DriverLicenseYear,
                 Description = request.Description,
+                Status = "Rezervasyon Alındı"
             });
         }
     }

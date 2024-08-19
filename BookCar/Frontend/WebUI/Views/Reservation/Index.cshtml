@@ -8,7 +8,7 @@
     <form class="bg-light p-5 contact-form" method="post">
         <h3 class="alert alert-success">Car Reservation Form</h3>
         <br />
-            <input asp-for="CarID" value="@ViewBag.v3" class="form-control" placeholder="Your Car">
+            <input type="hidden" asp-for="CarID" value="@ViewBag.v3" class="form-control" placeholder="Your Car">
         <div class="form-group">
             <input type="text" asp-for="Name" class="form-control" placeholder="Name">
         </div>

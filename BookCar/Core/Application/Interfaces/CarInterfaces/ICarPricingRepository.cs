@@ -1,4 +1,5 @@
-﻿using Domain.Entities;
+﻿using Application.ViewModels;
+using Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,6 @@ namespace Application.Interfaces.CarInterfaces
     public interface ICarPricingRepository
     {
         IQueryable<CarPricing> GetCarPricingWithCars();
+        List<CarPricingViewModel> GetCarPricingWithTimePeriod();
     }
 }
