@@ -10,5 +10,6 @@ namespace Domain.Entities
     {
         public int PricingID { get; set; }
         public string Name { get; set; }
+        public List<Reservation> Reservations { get; set; }
     }
 }

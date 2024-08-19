@@ -1,4 +1,5 @@
 ﻿using Dto.LocationDtos;
+using Dto.PricingDtos;
 using Dto.ReservationDtos;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -33,7 +34,17 @@ namespace WebUI.Controllers
                                             }).ToList();
             ViewBag.v = values2;
 
-            return View();
+			var responseMessage2 = await client.GetAsync("https://localhost:44380/api/Pricing");
+			var jsonData2 = await responseMessage2.Content.ReadAsStringAsync();
+			var pricings = JsonConvert.DeserializeObject<List<ResultPricingDto>>(jsonData2);
+			List<SelectListItem> values3 = (from x in pricings
+											select new SelectListItem
+											{
+												Text = x.Name,
+												Value = x.Id.ToString()
+											}).ToList();
+			ViewBag.pricing = values3;
+			return View();
         }
 
         [HttpPost]

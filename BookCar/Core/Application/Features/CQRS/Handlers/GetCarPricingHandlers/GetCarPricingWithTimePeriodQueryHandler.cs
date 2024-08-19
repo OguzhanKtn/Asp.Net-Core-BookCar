@@ -24,6 +24,7 @@ namespace Application.Features.CQRS.Handlers.GetCarPricingHandlers
 			var values = _carPricingRepository.GetCarPricingWithTimePeriod();
 			return values.Select(x => new GetCarPricingWithTimePeriodQueryResult
 			{
+				CarID = x.CarID,
 				Model = x.Model,
 				DailyAmount = x.Amounts[0],
 				WeeklyAmount = x.Amounts[1],

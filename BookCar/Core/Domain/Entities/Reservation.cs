@@ -15,6 +15,8 @@ namespace Domain.Entities
         public string Phone { get; set; }
         public int CarID { get; set; }
         public Car Car { get; set; }
+        public int? PricingID { get; set; }
+        public Pricing Pricing { get; set; }
         public int? PickUpLocationID { get; set; }
         public int? DropOffLocationID { get; set; }
         public int Age { get; set; }

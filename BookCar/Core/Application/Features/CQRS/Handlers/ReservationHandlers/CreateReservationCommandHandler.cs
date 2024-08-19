@@ -28,6 +28,7 @@ namespace Application.Features.CQRS.Handlers.ReservationHandlers
                 Email = request.Email,
                 Phone = request.Phone,
                 CarID = request.CarID,
+                PricingID = request.PricingID,
                 PickUpLocationID = request.PickUpLocationID,
                 DropOffLocationID = request.DropOffLocationID,
                 Age = request.Age,

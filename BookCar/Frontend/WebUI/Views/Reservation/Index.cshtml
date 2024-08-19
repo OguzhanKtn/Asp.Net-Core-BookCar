@@ -22,6 +22,9 @@
             <input type="text" asp-for="Phone" class="form-control" placeholder="Phone">
         </div>
         <div class="form-group">
+            @Html.DropDownListFor(x => x.PricingID, (List<SelectListItem>)ViewBag.pricing, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
             @Html.DropDownListFor(x => x.PickUpLocationID, (List<SelectListItem>)ViewBag.v, new { @class = "form-control" })
         </div>
         <div class="form-group">
