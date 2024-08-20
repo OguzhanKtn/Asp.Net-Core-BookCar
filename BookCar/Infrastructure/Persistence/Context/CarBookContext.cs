@@ -14,7 +14,7 @@ namespace Persistence.Context
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder
-                .UseSqlServer("Server = DESKTOP-S5STNHF; initial Catalog=CarBook; integrated security = true;trustservercertificate=true")
+                .UseSqlServer("Server = .; initial Catalog=CarBook; integrated security = true;trustservercertificate=true")
                 .EnableSensitiveDataLogging()
                    .LogTo(Console.WriteLine, LogLevel.Information);
         }
