@@ -46,7 +46,7 @@ namespace WebUI.Controllers
 			ViewBag.pricing = values3;
 			return View();
         }
-
+        
         [HttpPost]
         public async Task<IActionResult> Index(CreateReservationDto createReservationDto)
         {

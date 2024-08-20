@@ -44,7 +44,7 @@ namespace Persistence.Migrations
 
                     b.HasKey("AboutID");
 
-                    b.ToTable("abouts");
+                    b.ToTable("abouts", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Banner", b =>
@@ -73,7 +73,7 @@ namespace Persistence.Migrations
 
                     b.HasKey("BannerID");
 
-                    b.ToTable("banners");
+                    b.ToTable("banners", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Brand", b =>
@@ -90,7 +90,7 @@ namespace Persistence.Migrations
 
                     b.HasKey("BrandID");
 
-                    b.ToTable("brands");
+                    b.ToTable("brands", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Car", b =>
@@ -137,7 +137,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("BrandID");
 
-                    b.ToTable("cars");
+                    b.ToTable("cars", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.CarDescription", b =>
@@ -159,7 +159,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("CarID");
 
-                    b.ToTable("carDescriptions");
+                    b.ToTable("carDescriptions", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.CarFeature", b =>
@@ -185,7 +185,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("FeatureID");
 
-                    b.ToTable("carFeatures");
+                    b.ToTable("carFeatures", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.CarPricing", b =>
@@ -211,7 +211,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("PricingID");
 
-                    b.ToTable("carPricings");
+                    b.ToTable("carPricings", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Category", b =>
@@ -228,7 +228,7 @@ namespace Persistence.Migrations
 
                     b.HasKey("CategoryID");
 
-                    b.ToTable("categories");
+                    b.ToTable("categories", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Contact", b =>
@@ -265,7 +265,7 @@ namespace Persistence.Migrations
 
                     b.HasKey("ContactID");
 
-                    b.ToTable("contacts");
+                    b.ToTable("contacts", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Customer", b =>
@@ -290,7 +290,7 @@ namespace Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("customers");
+                    b.ToTable("customers", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Feature", b =>
@@ -307,7 +307,7 @@ namespace Persistence.Migrations
 
                     b.HasKey("FeatureID");
 
-                    b.ToTable("features");
+                    b.ToTable("features", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.FooterAdress", b =>
@@ -336,7 +336,7 @@ namespace Persistence.Migrations
 
                     b.HasKey("FooterAdressID");
 
-                    b.ToTable("footerAdresses");
+                    b.ToTable("footerAdresses", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Location", b =>
@@ -353,7 +353,7 @@ namespace Persistence.Migrations
 
                     b.HasKey("LocationID");
 
-                    b.ToTable("locations");
+                    b.ToTable("locations", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Pricing", b =>
@@ -370,7 +370,7 @@ namespace Persistence.Migrations
 
                     b.HasKey("PricingID");
 
-                    b.ToTable("pricings");
+                    b.ToTable("pricings", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.RentACar", b =>
@@ -396,7 +396,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("LocationID");
 
-                    b.ToTable("rentACars");
+                    b.ToTable("rentACars", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.RentACarProcess", b =>
@@ -448,7 +448,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("CustomerID");
 
-                    b.ToTable("rentACarProcesses");
+                    b.ToTable("rentACarProcesses", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Reservation", b =>
@@ -510,7 +510,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("PricingID");
 
-                    b.ToTable("reservations");
+                    b.ToTable("reservations", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Service", b =>
@@ -535,7 +535,7 @@ namespace Persistence.Migrations
 
                     b.HasKey("ServiceID");
 
-                    b.ToTable("services");
+                    b.ToTable("services", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.SocialMedia", b =>
@@ -560,7 +560,7 @@ namespace Persistence.Migrations
 
                     b.HasKey("SocialMediaID");
 
-                    b.ToTable("socialMedias");
+                    b.ToTable("socialMedias", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Testimonial", b =>
@@ -589,7 +589,7 @@ namespace Persistence.Migrations
 
                     b.HasKey("TestimonialID");
 
-                    b.ToTable("testimonials");
+                    b.ToTable("testimonials", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Car", b =>
