@@ -19,9 +19,15 @@ namespace Application.Features.CQRS.Handlers.CarFeatureHandlers
             _repository = repository;
         }
 
-        public Task<List<GetCarFeatureByCarIdQueryResult>> Handle(GetCarFeatureByCarIdQuery request, CancellationToken cancellationToken)
+        public async Task<List<GetCarFeatureByCarIdQueryResult>> Handle(GetCarFeatureByCarIdQuery request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var values = _repository.GetCarFeaturesByCarID(request.Id);
+            return values.Select(x => new GetCarFeatureByCarIdQueryResult { 
+             CarFeatureID = x.CarFeatureID,
+             FeatureID = x.FeatureID,
+             FeatureName = x.Feature.Name,
+             Available = x.Available,
+            }).ToList();
         }
     }
 }

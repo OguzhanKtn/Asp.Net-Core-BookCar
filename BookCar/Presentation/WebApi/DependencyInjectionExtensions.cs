@@ -1,6 +1,7 @@
 ﻿using Application.Features.CQRS.Handlers.AboutHandlers;
 using Application.Features.CQRS.Handlers.BannerHandlers;
 using Application.Features.CQRS.Handlers.BrandHandlers;
+using Application.Features.CQRS.Handlers.CarFeatureHandlers;
 using Application.Features.CQRS.Handlers.CarHandlers;
 using Application.Features.CQRS.Handlers.CategoryHandlers;
 using Application.Features.CQRS.Handlers.ContactHandlers;
@@ -37,6 +38,7 @@ namespace WebApi
             services.AddScoped(typeof(IStatisticsRepository), typeof(StatisticsRepository));
             services.AddScoped(typeof(ICarPricingRepository), typeof(CarPricingRepository));
             services.AddScoped(typeof(IRentACarRepository), typeof(RentACarRepository));
+            services.AddScoped(typeof(ICarFeatureRepository), typeof(CarFeatureRepository));
             services.AddMediatR(cfg =>
             {
                 cfg.RegisterServicesFromAssembly(typeof(CreateAboutCommandHandler).Assembly);
@@ -135,6 +137,7 @@ namespace WebApi
                 cfg.RegisterServicesFromAssembly(typeof(GetCarCountByTransmissionIsAutoQueryHandler).Assembly);
                 cfg.RegisterServicesFromAssembly(typeof(GetLocationCountQueryHandler).Assembly);
                 cfg.RegisterServicesFromAssembly(typeof(GetRentACarQueryHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(GetCarFeatureByCarIdQueryHandler).Assembly);
 
 
             });
