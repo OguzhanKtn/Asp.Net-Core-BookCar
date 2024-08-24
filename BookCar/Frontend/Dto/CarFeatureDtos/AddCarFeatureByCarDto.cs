@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Features.CQRS.Results.FeatureResults
+namespace Dto.CarFeatureDtos
 {
-    public class GetFeatureQueryResult
+    public class AddCarFeatureByCarDto
     {
         public int FeatureID { get; set; }
-        public string Name { get; set; }
+        public int CarID { get; set; }
     }
 }

@@ -25,7 +25,7 @@ namespace Application.Features.CQRS.Handlers.FeatureHandlers
             var values = await _repository.GetAllAsync();
            return values.Select(x => new GetFeatureQueryResult()
             {
-               Id = x.FeatureID,
+               FeatureID = x.FeatureID,
                Name = x.Name,
             }).ToList();
         }

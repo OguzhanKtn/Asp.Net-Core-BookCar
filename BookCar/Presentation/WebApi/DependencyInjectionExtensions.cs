@@ -138,8 +138,9 @@ namespace WebApi
                 cfg.RegisterServicesFromAssembly(typeof(GetLocationCountQueryHandler).Assembly);
                 cfg.RegisterServicesFromAssembly(typeof(GetRentACarQueryHandler).Assembly);
                 cfg.RegisterServicesFromAssembly(typeof(GetCarFeatureByCarIdQueryHandler).Assembly);
-
-
+                cfg.RegisterServicesFromAssembly(typeof(UpdateCarFeatureAvailableChangeToTrueCommandHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(UpdateCarFeatureAvailableChangeToFalseCommandHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(CreateCarFeatureByCarCommandHandler).Assembly);
             });
 
             return services;
