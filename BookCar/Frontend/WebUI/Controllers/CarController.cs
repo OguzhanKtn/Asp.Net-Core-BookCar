@@ -28,5 +28,13 @@ namespace WebUI.Controllers
             }
             return View();
         }
+
+        public async Task<IActionResult> Details(int id)
+        {
+            ViewBag.v1 = "Car Details";
+            ViewBag.v2 = "Technical Accessories and Features Of The Car";
+            ViewBag.carId = id;
+            return View();
+        }
     }
 }
