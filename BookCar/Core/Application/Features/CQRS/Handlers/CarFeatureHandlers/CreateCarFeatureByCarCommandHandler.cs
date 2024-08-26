@@ -28,7 +28,7 @@ namespace Application.Features.CQRS.Handlers.CarFeatureHandlers
                 {
                     CarID = item.CarID,
                     FeatureID = item.FeatureID,
-                    Available = false
+                    Available = item.Available
                 });
             }
              _repository.CreateCarFeatureByCar(carFeatures);

@@ -22,7 +22,7 @@
                                     <input type="hidden" asp-for="@Model[i].FeatureID" />
                                     <input type="hidden" asp-for="@Model[i].Name" />
                                     <input type="hidden" asp-for="@Model[i].CarID" value="@CarID" />
-                                    <input type="checkbox" class="form-check-input" />
+                                    <input type="checkbox" class="form-check-input" asp-for="@Model[i].Available" />
                                     <label class="form-check-label">@Model[i].Name</label>
                                 </div>
                             }

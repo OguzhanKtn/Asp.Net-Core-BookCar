@@ -82,7 +82,8 @@ namespace WebUI.Areas.Admin.Controllers
                     CarFeatures = dto.Select(d => new CarFeatureViewModel
                     {
                         FeatureID = d.FeatureID,
-                        CarID = d.CarID
+                        CarID = d.CarID,
+                        Available =d.Available
                     }).ToList()
                 };
                 var jsonData = JsonConvert.SerializeObject(command);

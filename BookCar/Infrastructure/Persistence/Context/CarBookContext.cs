@@ -14,11 +14,12 @@ namespace Persistence.Context
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder
-                .UseSqlServer("Server = .; initial Catalog=CarBook; integrated security = true;trustservercertificate=true")
+                .UseSqlServer("Server = DESKTOP-S5STNHF; initial Catalog=CarBook; integrated security = true;trustservercertificate=true")
                 .EnableSensitiveDataLogging()
                    .LogTo(Console.WriteLine, LogLevel.Information);
         }
-
+        public DbSet<AppUser> users { get; set; }
+        public DbSet<AppRole> roles { get; set; }
         public DbSet<About> abouts { get; set; }
         public DbSet<Banner> banners { get; set; }
         public DbSet<Brand> brands { get; set; }

@@ -10,5 +10,6 @@ namespace Dto.CarFeatureDtos
     {
         public int FeatureID { get; set; }
         public int CarID { get; set; }
+        public bool Available { get; set; }
     }
 }
