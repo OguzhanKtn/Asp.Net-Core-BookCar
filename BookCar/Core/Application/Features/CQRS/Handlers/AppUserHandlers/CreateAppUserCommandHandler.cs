@@ -24,6 +24,9 @@ namespace Application.Features.CQRS.Handlers.AppUserHandlers
         {
             await _repository.CreateAsync(new AppUser
             {
+                Name = request.Name,
+                Email = request.Email,
+                Surname = request.Surname,
                 Username = request.Username, 
                 Password = request.Password,
                 AppRoleId = (int)RoleTypes.Member
