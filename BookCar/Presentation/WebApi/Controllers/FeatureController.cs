@@ -1,6 +1,7 @@
 ﻿using Application.Features.CQRS.Commands.FeatureCommands;
 using Application.Features.CQRS.Queries.FeatureQueries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
@@ -28,12 +29,14 @@ namespace WebApi.Controllers
             var value = await _mediator.Send(new GetFeatureByIdQuery(id));
             return Ok(value);
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> CreateFeature(CreateFeatureCommand command)
         {
             await _mediator.Send(command);
             return Ok("Başarıyla Eklendi");
         }
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         public async Task<IActionResult> UpdateFeature(UpdateFeatureCommand command)
         {
@@ -41,6 +44,7 @@ namespace WebApi.Controllers
             return Ok("Başarıyla Güncellendi");
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         public async Task<IActionResult> DeleteFeature(int id)
         {

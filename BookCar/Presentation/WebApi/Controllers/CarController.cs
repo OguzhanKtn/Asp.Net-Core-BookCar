@@ -3,6 +3,7 @@ using Application.Features.CQRS.Queries.CarPricingQueries;
 using Application.Features.CQRS.Queries.CarQueries;
 using Application.Features.CQRS.Queries.StatisticsQueries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -31,19 +32,21 @@ namespace WebApi.Controllers
             var value = await _mediator.Send(new GetCarByIdQuery(id));
             return Ok(value);
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> CreateCar(CreateCarCommand command)
         {
             await _mediator.Send(command);
             return Ok("Başarıyla Eklendi");
         }
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         public async Task<IActionResult> UpdateCar(UpdateCarCommand command)
         {
             await _mediator.Send(command);
             return Ok("Başarıyla Güncellendi");
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCar(int id)
         {

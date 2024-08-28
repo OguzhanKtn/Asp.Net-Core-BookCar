@@ -1,6 +1,7 @@
 ﻿using Application.Features.CQRS.Commands.BannerCommands;
 using Application.Features.CQRS.Queries.BannerQueries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
@@ -28,19 +29,21 @@ namespace WebApi.Controllers
             var value = await _mediator.Send(new GetBannerByIdQuery(id));
             return Ok(value);
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> CreateBanner(CreateBannerCommand command)
         {
             await _mediator.Send(command);
             return Ok("Başarıyla Eklendi");
         }
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         public async Task<IActionResult> UpdateBanner(UpdateBannerCommand command)
         {
             await _mediator.Send(command);
             return Ok("Başarıyla Güncellendi");
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         public async Task<IActionResult> DeleteBanner(int id)
         {

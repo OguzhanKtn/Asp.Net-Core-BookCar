@@ -1,6 +1,7 @@
 ﻿using Application.Features.CQRS.Commands.ServiceCommands;
 using Application.Features.CQRS.Queries.ServiceQueries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -29,19 +30,21 @@ namespace WebApi.Controllers
             var value = await _mediator.Send(new GetServiceByIdQuery(id));
             return Ok(value);
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> CreateService(CreateServiceCommand command)
         {
             await _mediator.Send(command);
             return Ok("Başarıyla Eklendi");
         }
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         public async Task<IActionResult> UpdateService(UpdateServiceCommand command)
         {
             await _mediator.Send(command);
             return Ok("Başarıyla Güncellendi");
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         public async Task<IActionResult> DeleteService(int id)
         {

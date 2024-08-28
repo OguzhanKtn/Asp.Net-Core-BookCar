@@ -1,6 +1,7 @@
 ﻿using Application.Features.CQRS.Commands.ContactCommands;
 using Application.Features.CQRS.Queries.ContactQueries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
@@ -34,13 +35,14 @@ namespace WebApi.Controllers
             await _mediator.Send(command);
             return Ok("Başarıyla Eklendi");
         }
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         public async Task<IActionResult> UpdateContact(UpdateContactCommand command)
         {
             await _mediator.Send(command);
             return Ok("Başarıyla Güncellendi");
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         public async Task<IActionResult> DeleteContact(int id)
         {

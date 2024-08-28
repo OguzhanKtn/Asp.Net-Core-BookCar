@@ -1,6 +1,7 @@
 ﻿using Application.Features.CQRS.Commands.CarFeaturesCommand;
 using Application.Features.CQRS.Queries.CarFeatureQueries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -37,7 +38,7 @@ namespace WebApi.Controllers
             await _mediator.Send(new UpdateCarFeatureAvailableChangeToTrueCommand(id));
             return Ok("Güncelleme Yapıldı");
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> CreateCarFeatureByCarID(CreateCarFeatureByCarCommand command)
         {

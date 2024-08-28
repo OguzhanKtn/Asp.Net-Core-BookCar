@@ -2,12 +2,15 @@
 using Application.ViewModels;
 using Dto.CarFeatureDtos;
 using Dto.FeatureDtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Net.Http.Headers;
 using System.Text;
 
 namespace WebUI.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Area("Admin")]
     [Route("Admin/AdminCarFeatureDetail")]
     public class AdminCarFeatureDetailController : Controller
@@ -37,7 +40,6 @@ namespace WebUI.Areas.Admin.Controllers
         [Route("Index/{id}")]
         public async Task<IActionResult> Index(List<ResultCarFeatureByCarIdDto> resultCarFeatureByCarIdDto)
         {
-
             foreach (var item in resultCarFeatureByCarIdDto)
             {
                 if (item.Available)
@@ -74,37 +76,43 @@ namespace WebUI.Areas.Admin.Controllers
         [Route("CreateFeatureByCarID/{id}")]
         public async Task<IActionResult> AddFeatureByCar(List<AddCarFeatureByCarDto> dto)
         {
-            try
+            var token = User.Claims.FirstOrDefault(x => x.Type == "carbooktoken")?.Value;
+            if (token != null)
             {
-                var client = _httpClientFactory.CreateClient();
-                var command = new CreateCarFeatureByCarCommand
+                try
                 {
-                    CarFeatures = dto.Select(d => new CarFeatureViewModel
+                    var client = _httpClientFactory.CreateClient();
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                    var command = new CreateCarFeatureByCarCommand
                     {
-                        FeatureID = d.FeatureID,
-                        CarID = d.CarID,
-                        Available =d.Available
-                    }).ToList()
-                };
-                var jsonData = JsonConvert.SerializeObject(command);
-                StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-                var responseMessage = await client.PostAsync("https://localhost:44380/api/CarFeatures",stringContent);
-                if (responseMessage.IsSuccessStatusCode)
-                {
-                    return RedirectToAction("Index", "AdminCar");
+                        CarFeatures = dto.Select(d => new CarFeatureViewModel
+                        {
+                            FeatureID = d.FeatureID,
+                            CarID = d.CarID,
+                            Available = d.Available
+                        }).ToList()
+                    };
+                    var jsonData = JsonConvert.SerializeObject(command);
+                    StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+                    var responseMessage = await client.PostAsync("https://localhost:44380/api/CarFeatures", stringContent);
+                    if (responseMessage.IsSuccessStatusCode)
+                    {
+                        return RedirectToAction("Index", "AdminCar");
+                    }
+                    else
+                    {
+                        var errorResponse = await responseMessage.Content.ReadAsStringAsync();
+                        ModelState.AddModelError(string.Empty, $"API Error: {responseMessage.StatusCode} - {errorResponse}");
+                        return View();
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    var errorResponse = await responseMessage.Content.ReadAsStringAsync();
-                    ModelState.AddModelError(string.Empty, $"API Error: {responseMessage.StatusCode} - {errorResponse}");
+                    ModelState.AddModelError(string.Empty, $"An error occurred: {ex.Message}");
                     return View();
                 }
             }
-            catch (Exception ex)
-            {
-                ModelState.AddModelError(string.Empty, $"An error occurred: {ex.Message}");
-                return View();
-            }
+               return View();
         }
     }
 }

@@ -1,11 +1,14 @@
 ﻿using Dto.FooterAddressDtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 
 namespace WebUI.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Area("Admin")]
     [Route("Admin/AdminFooterAddress")]
     public class AdminFooterAddressController : Controller
@@ -39,26 +42,37 @@ namespace WebUI.Areas.Admin.Controllers
         [Route("CreateFooterAddress")]
         public async Task<IActionResult> CreateFooterAddress(CreateFooterAddressDto createFooterAddressDto)
         {
-            var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(createFooterAddressDto);
-            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("https://localhost:44380/api/FooterAddress", stringContent);
-            if (responseMessage.IsSuccessStatusCode)
+            var token = User.Claims.FirstOrDefault(x => x.Type == "carbooktoken")?.Value;
+            if (token != null)
             {
-                return RedirectToAction("Index", "AdminFooterAddress", new { area = "Admin" });
-            }
+                var client = _httpClientFactory.CreateClient();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                var jsonData = JsonConvert.SerializeObject(createFooterAddressDto);
+                StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+                var responseMessage = await client.PostAsync("https://localhost:44380/api/FooterAddress", stringContent);
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index", "AdminFooterAddress", new { area = "Admin" });
+                }
+            }   
             return View();
         }
 
         [Route("RemoveFooterAddress/{id}")]
         public async Task<IActionResult> RemoveFooterAddress(int id)
         {
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.DeleteAsync("https://localhost:44380/api/FooterAddress?id=" + id);
-            if (responseMessage.IsSuccessStatusCode)
+            var token = User.Claims.FirstOrDefault(x => x.Type == "carbooktoken")?.Value;
+            if (token != null)
             {
-                return RedirectToAction("Index", "AdminFooterAddress", new { area = "Admin" });
+                var client = _httpClientFactory.CreateClient();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                var responseMessage = await client.DeleteAsync("https://localhost:44380/api/FooterAddress?id=" + id);
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index", "AdminFooterAddress", new { area = "Admin" });
+                }
             }
+           
             return View();
         }
 
@@ -81,14 +95,19 @@ namespace WebUI.Areas.Admin.Controllers
         [Route("UpdateFooterAddress/{id}")]
         public async Task<IActionResult> UpdateFooterAddress(UpdateFooterAddressDto updateFooterAddressDto)
         {
-            var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(updateFooterAddressDto);
-            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PutAsync("https://localhost:44380/api/FooterAddress/", stringContent);
-            if (responseMessage.IsSuccessStatusCode)
+            var token = User.Claims.FirstOrDefault(x => x.Type == "carbooktoken")?.Value;
+            if (token != null)
             {
-                return RedirectToAction("Index", "AdminFooterAddress", new { area = "Admin" });
-            }
+                var client = _httpClientFactory.CreateClient();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                var jsonData = JsonConvert.SerializeObject(updateFooterAddressDto);
+                StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+                var responseMessage = await client.PutAsync("https://localhost:44380/api/FooterAddress/", stringContent);
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index", "AdminFooterAddress", new { area = "Admin" });
+                }
+            }      
             return View();
         }
     }

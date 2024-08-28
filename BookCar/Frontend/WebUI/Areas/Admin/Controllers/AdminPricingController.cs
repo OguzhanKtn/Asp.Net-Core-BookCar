@@ -1,10 +1,13 @@
 ﻿using Dto.PricingDtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Net.Http.Headers;
 using System.Text;
 
 namespace WebUI.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Area("Admin")]
     [Route("Admin/AdminPricing")]
     public class AdminPricingController : Controller
@@ -39,27 +42,37 @@ namespace WebUI.Areas.Admin.Controllers
         [Route("CreatePricing")]
         public async Task<IActionResult> CreatePricing(CreatePricingDto createPricingDto)
         {
-            var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(createPricingDto);
-            StringContent stringContent = new StringContent(jsonData,Encoding.UTF8,"application/json");
-            var responseMessage = await client.PostAsync("https://localhost:44380/api/Pricing",stringContent);
-
-            if (responseMessage.IsSuccessStatusCode)
+            var token = User.Claims.FirstOrDefault(x => x.Type == "carbooktoken")?.Value;
+            if (token != null)
             {
-                return RedirectToAction("Index", "AdminPricing", new { area = "Admin" });
-            }
+                var client = _httpClientFactory.CreateClient();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                var jsonData = JsonConvert.SerializeObject(createPricingDto);
+                StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+                var responseMessage = await client.PostAsync("https://localhost:44380/api/Pricing", stringContent);
+
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index", "AdminPricing", new { area = "Admin" });
+                }
+            }         
             return View();
         }
 
         [Route("RemovePricing/{id}")]
         public async Task<IActionResult> RemovePricing(int id)
         {
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.DeleteAsync("https://localhost:44380/api/Pricing?id=" + id);
-            if (responseMessage.IsSuccessStatusCode)
+            var token = User.Claims.FirstOrDefault(x => x.Type == "carbooktoken")?.Value;
+            if (token != null)
             {
-                return RedirectToAction("Index", "AdminPricing", new { area = "Admin" });
-            }
+                var client = _httpClientFactory.CreateClient();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                var responseMessage = await client.DeleteAsync("https://localhost:44380/api/Pricing?id=" + id);
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index", "AdminPricing", new { area = "Admin" });
+                }
+            }         
             return View();
         }
 
@@ -82,14 +95,19 @@ namespace WebUI.Areas.Admin.Controllers
         [Route("UpdatePricing/{id}")]
         public async Task<IActionResult> UpdatePricing(UpdatePricingDto updatePricingDto)
         {
-            var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(updatePricingDto);
-            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PutAsync("https://localhost:44380/api/Pricing/", stringContent);
-            if (responseMessage.IsSuccessStatusCode)
+            var token = User.Claims.FirstOrDefault(x => x.Type == "carbooktoken")?.Value;
+            if (token != null)
             {
-                return RedirectToAction("Index", "AdminPricing", new { area = "Admin" });
-            }
+                var client = _httpClientFactory.CreateClient();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                var jsonData = JsonConvert.SerializeObject(updatePricingDto);
+                StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+                var responseMessage = await client.PutAsync("https://localhost:44380/api/Pricing/", stringContent);
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index", "AdminPricing", new { area = "Admin" });
+                }
+            }              
             return View();
         }
     }

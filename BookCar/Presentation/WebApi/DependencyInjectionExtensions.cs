@@ -1,4 +1,5 @@
 ﻿using Application.Features.CQRS.Handlers.AboutHandlers;
+using Application.Features.CQRS.Handlers.AppUserHandlers;
 using Application.Features.CQRS.Handlers.BannerHandlers;
 using Application.Features.CQRS.Handlers.BrandHandlers;
 using Application.Features.CQRS.Handlers.CarFeatureHandlers;
@@ -16,11 +17,13 @@ using Application.Features.CQRS.Handlers.SocialMediaHandlers;
 using Application.Features.CQRS.Handlers.StatisticsHandlers;
 using Application.Features.CQRS.Handlers.TestimonialHandlers;
 using Application.Interfaces;
+using Application.Interfaces.AppUserInterfaces;
 using Application.Interfaces.CarInterfaces;
 using Application.Interfaces.RentACarInterfaces;
 using Application.Interfaces.StatisticsInterfaces;
 using Persistence.Context;
 using Persistence.Repositories;
+using Persistence.Repositories.AppUserRepositories;
 using Persistence.Repositories.CarRepositories;
 using Persistence.Repositories.RentACarRepositories;
 using Persistence.Repositories.StatisticsRepositories;
@@ -39,6 +42,7 @@ namespace WebApi
             services.AddScoped(typeof(ICarPricingRepository), typeof(CarPricingRepository));
             services.AddScoped(typeof(IRentACarRepository), typeof(RentACarRepository));
             services.AddScoped(typeof(ICarFeatureRepository), typeof(CarFeatureRepository));
+            services.AddScoped(typeof(IAppUserRepository), typeof(AppUserRepository));
             services.AddMediatR(cfg =>
             {
                 cfg.RegisterServicesFromAssembly(typeof(CreateAboutCommandHandler).Assembly);
@@ -141,6 +145,8 @@ namespace WebApi
                 cfg.RegisterServicesFromAssembly(typeof(UpdateCarFeatureAvailableChangeToTrueCommandHandler).Assembly);
                 cfg.RegisterServicesFromAssembly(typeof(UpdateCarFeatureAvailableChangeToFalseCommandHandler).Assembly);
                 cfg.RegisterServicesFromAssembly(typeof(CreateCarFeatureByCarCommandHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(CreateAppUserCommandHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(GetCheckAppUserQueryHandler).Assembly);
             });
 
             return services;
