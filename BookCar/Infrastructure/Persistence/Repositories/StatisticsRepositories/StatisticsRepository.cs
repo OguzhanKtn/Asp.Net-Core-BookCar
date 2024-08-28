@@ -34,22 +34,22 @@ namespace Persistence.Repositories.StatisticsRepositories
 
         public decimal GetAvgRentPriceForDaily()
         {
-            //Select Avg(Amount) from CarPricings where PricingID = (Select PricingID From Pricings Where Name = 'Günlük')
-            int id = _context.pricings.Where(x => x.Name.Equals("Günlük")).Select(y => y.PricingID).FirstOrDefault();
+            //Select Avg(Amount) from CarPricings where PricingID = (Select PricingID From Pricings Where Name = 'Daily')
+            int id = _context.pricings.Where(x => x.Name.Equals("Daily")).Select(y => y.PricingID).FirstOrDefault();
             var value = _context.carPricings.Where(x => x.PricingID == id).Average(y => y.Amount);
             return value;
         }
 
         public decimal GetAvgRentPriceForMonthly()
         {
-            int id = _context.pricings.Where(x => x.Name.Equals("Aylık")).Select(y => y.PricingID).FirstOrDefault();
+            int id = _context.pricings.Where(x => x.Name.Equals("Monthly")).Select(y => y.PricingID).FirstOrDefault();
             var value = _context.carPricings.Where(x => x.PricingID == id).Average(y => y.Amount);
             return value;
         }
 
         public decimal GetAvgRentPriceForWeekly()
         {
-            int id = _context.pricings.Where(x => x.Name.Equals("Haftalık")).Select(y => y.PricingID).FirstOrDefault();
+            int id = _context.pricings.Where(x => x.Name.Equals("Weekly")).Select(y => y.PricingID).FirstOrDefault();
             var value = _context.carPricings.Where(x => x.PricingID == id).Average(y => y.Amount);
             return value;
         }
@@ -61,10 +61,10 @@ namespace Persistence.Repositories.StatisticsRepositories
 
         public string GetCarBrandAndModelByRentPriceDailyMax()
         {
-            // select * from CarPricings where PricingID = (select PricingID from Pricings where Name = 'Günlük')
+            // select * from CarPricings where PricingID = (select PricingID from Pricings where Name = 'Daily')
             // and Amount = (select Max(Amount) from CarPricings where PricingID = (select PricingID from Pricings where Name = 'Günlük'))
 
-            int pricingID = _context.pricings.Where(x => x.Name.Equals("Günlük")).Select(y => y.PricingID).FirstOrDefault();
+            int pricingID = _context.pricings.Where(x => x.Name.Equals("Daily")).Select(y => y.PricingID).FirstOrDefault();
             decimal amount = _context.carPricings.Where(x => x.PricingID == pricingID).Select(x => x.Amount).Max();
             int carID = _context.carPricings.Where(x => x.PricingID == pricingID && x.Amount == amount).Select(y => y.CarID).FirstOrDefault();
 
@@ -75,7 +75,7 @@ namespace Persistence.Repositories.StatisticsRepositories
 
         public string GetCarBrandAndModelByRentPriceDailyMin() 
         {
-            int pricingID = _context.pricings.Where(x => x.Name.Equals("Günlük")).Select(y => y.PricingID).FirstOrDefault();
+            int pricingID = _context.pricings.Where(x => x.Name.Equals("Daily")).Select(y => y.PricingID).FirstOrDefault();
             decimal amount = _context.carPricings.Where(x => x.PricingID == pricingID).Select(x => x.Amount).Min();
             int carID = _context.carPricings.Where(x => x.PricingID == pricingID && x.Amount == amount).Select(y => y.CarID).FirstOrDefault();
 
