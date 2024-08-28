@@ -3,44 +3,49 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/UILayout/Index.cshtml";
 }
-
-<div class="col-md-12 block-9 mb-md-5"> 
-    <form class="bg-light p-5 contact-form" method="post">
-        <h3 class="alert alert-success">Car Reservation Form</h3>
-        <br />
+<div class="container">
+    <div class="col-md-12 block-9 mb-md-5">
+        <form class="bg-light p-5 contact-form" method="post">
+            <h3 class="alert alert-success">Car Reservation Form</h3>
+            <br />
             <input type="hidden" asp-for="CarID" value="@ViewBag.v3" class="form-control" placeholder="Your Car">
-        <div class="form-group">
-            <input type="text" asp-for="Name" class="form-control" placeholder="Name">
-        </div>
-        <div class="form-group">
-            <input type="text" asp-for="Surname" class="form-control" placeholder="Surname">
-        </div>
-        <div class="form-group">
-            <input type="text" asp-for="Email" class="form-control" placeholder="Email">
-        </div>
-        <div class="form-group">
-            <input type="text" asp-for="Phone" class="form-control" placeholder="Phone">
-        </div>
-        <div class="form-group">
-            @Html.DropDownListFor(x => x.PricingID, (List<SelectListItem>)ViewBag.pricing, new { @class = "form-control" })
-        </div>
-        <div class="form-group">
-            @Html.DropDownListFor(x => x.PickUpLocationID, (List<SelectListItem>)ViewBag.v, new { @class = "form-control" })
-        </div>
-        <div class="form-group">
-            @Html.DropDownListFor(x=>x.DropOffLocationID,(List<SelectListItem>)ViewBag.v,new{@class="form-control"})
-        </div>
-        <div class="form-group">
-            <input type="text" asp-for="Age" class="form-control" placeholder="Age">
-        </div>
-        <div class="form-group">
-            <input type="text" asp-for="DriverLicenseYear" class="form-control" placeholder="Driver License Year">
-        </div>
-        <div class="form-group">
-            <textarea  asp-for="Description" id="" cols="30" rows="7" class="form-control" placeholder="Your requests"></textarea>
-        </div>
-        <div class="form-group">
-            <input type="submit" value="Send Reservation" class="btn btn-primary py-3 px-5">
-        </div>
-    </form>
+            <div class="form-group">
+                <input type="text" asp-for="Name" class="form-control" placeholder="Name">
+            </div>
+            <div class="form-group">
+                <input type="text" asp-for="Surname" class="form-control" placeholder="Surname">
+            </div>
+            <div class="form-group">
+                <input type="text" asp-for="Email" class="form-control" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <input type="text" asp-for="Phone" class="form-control" placeholder="Phone">
+            </div>
+            <div class="form-group">
+                <label class="label">Pricing</label>
+                @Html.DropDownListFor(x => x.PricingID, (List<SelectListItem>)ViewBag.pricing, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label class="label">Pick Up Location</label>
+                @Html.DropDownListFor(x => x.PickUpLocationID, (List<SelectListItem>)ViewBag.v, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label class="label">Drop Off Location</label>
+                @Html.DropDownListFor(x => x.DropOffLocationID, (List<SelectListItem>)ViewBag.v, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <input type="text" asp-for="Age" class="form-control" placeholder="Age">
+            </div>
+            <div class="form-group">
+                <input type="text" asp-for="DriverLicenseYear" class="form-control" placeholder="Driver License Year">
+            </div>
+            <div class="form-group">
+                <textarea asp-for="Description" id="" cols="30" rows="7" class="form-control" placeholder="Your requests"></textarea>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Send Reservation" class="btn btn-primary py-3 px-5">
+            </div>
+        </form>
+    </div>
 </div>
+
