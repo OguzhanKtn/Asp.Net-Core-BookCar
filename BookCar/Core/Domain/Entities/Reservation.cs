@@ -25,6 +25,7 @@ namespace Domain.Entities
         public Location PickUpLocation { get; set; }
         public Location DropOffLocation { get; set; }
         public string Status { get; set; }
+        public DateTime ReservationDate { get; set; } = DateTime.Now;
 
     }
 }

@@ -1,5 +1,7 @@
 ﻿using Application.Features.CQRS.Commands.ReservationCommands;
+using Application.Features.CQRS.Queries.ReservationQueries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,6 +23,14 @@ namespace WebApi.Controllers
         {
             await _mediator.Send(command);
             return Ok("Reference is added succesfully");
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
+        public async Task<IActionResult> GetReservations()
+        {
+           var reservations = await _mediator.Send(new GetReservationsQuery());
+            return Ok(reservations);
         }
     }
 }

@@ -12,6 +12,7 @@ using Application.Features.CQRS.Handlers.GetCarPricingHandlers;
 using Application.Features.CQRS.Handlers.LocationHandlers;
 using Application.Features.CQRS.Handlers.PricingHandlers;
 using Application.Features.CQRS.Handlers.RentACarHandlers;
+using Application.Features.CQRS.Handlers.ReservationHandlers;
 using Application.Features.CQRS.Handlers.ServiceHandlers;
 using Application.Features.CQRS.Handlers.SocialMediaHandlers;
 using Application.Features.CQRS.Handlers.StatisticsHandlers;
@@ -20,12 +21,14 @@ using Application.Interfaces;
 using Application.Interfaces.AppUserInterfaces;
 using Application.Interfaces.CarInterfaces;
 using Application.Interfaces.RentACarInterfaces;
+using Application.Interfaces.ReservationInterfaces;
 using Application.Interfaces.StatisticsInterfaces;
 using Persistence.Context;
 using Persistence.Repositories;
 using Persistence.Repositories.AppUserRepositories;
 using Persistence.Repositories.CarRepositories;
 using Persistence.Repositories.RentACarRepositories;
+using Persistence.Repositories.ReservationRepositories;
 using Persistence.Repositories.StatisticsRepositories;
 using System.Reflection;
 
@@ -43,6 +46,7 @@ namespace WebApi
             services.AddScoped(typeof(IRentACarRepository), typeof(RentACarRepository));
             services.AddScoped(typeof(ICarFeatureRepository), typeof(CarFeatureRepository));
             services.AddScoped(typeof(IAppUserRepository), typeof(AppUserRepository));
+            services.AddScoped(typeof(IReservationRepository), typeof(ReservationRepository));
             services.AddMediatR(cfg =>
             {
                 cfg.RegisterServicesFromAssembly(typeof(CreateAboutCommandHandler).Assembly);
@@ -147,6 +151,7 @@ namespace WebApi
                 cfg.RegisterServicesFromAssembly(typeof(CreateCarFeatureByCarCommandHandler).Assembly);
                 cfg.RegisterServicesFromAssembly(typeof(CreateAppUserCommandHandler).Assembly);
                 cfg.RegisterServicesFromAssembly(typeof(GetCheckAppUserQueryHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(GetReservationsQueryHandler).Assembly);
             });
 
             return services;
